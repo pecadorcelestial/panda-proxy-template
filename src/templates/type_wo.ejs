@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Orden de trabajo - <%= odx.folio %></title>
+
+    <link rel="stylesheet" href="<%= publicPath %>/styles/receipts/html5reset-1.6.1.css">
+    <link rel="stylesheet" href="<%= publicPath %>/styles/odx/type_wo_receipt.css">
+</head>
+
+<body>
+    <div style="max-height: 356mm; overflow: hidden;">
+        <div class="contenedor_master">
+            <br>
+            <div id="header">
+                <div class="all_width text-left">
+                    <img src="<%= publicPath %>/images/invoices/logo.jpg" alt="Domain">
+                </div>
+                <br>
+                <span class="fiscal-info-domain font9 bold text-center all_width">
+                    CAR&Aacute;TULA DEL CONTRATO DE PRESTACI&Oacute;N DEL SERVICIO DE TELEVISI&Oacute;N
+                </span>
+                <span class="fiscal-info-domain font9 bold text-center all_width">
+                    RESTRINGIDA Y/O INTERNET Y/O SERVICIO DE TELEFON&Iacute;A FIJA
+                </span>
+            </div>
+
+            <table class="receipt" style="width: 100%;">
+                <tr class="con_borde">
+                    <td class="font8 bold con_borde_derecha" style="width: 115mm;">
+                        <p class="txt_normales">Folio ODT: <%= odx.folio %></p>
+                    </td>
+                    <td class="font8 bold con_borde_derecha" colspan="2">
+                        <p class="txt_normales">N&uacute;mero de Cuenta: <%= account.accountNumber %></p>
+                    </td>
+                </tr>
+                <tr class="con_borde">
+                    <td class="font10" colspan="2">
+                        <p class="txt_normales">
+                            <b>SUSCRIPTOR O RAZON SOCIAL</b>: <%= client.businessData.businessName %>
+                        </p>
+                        <p class="txt_normales">
+                            <b>REPRESENTANTE LEGAL</b>: <%= client.firstName %> <%= client.lastName %>
+                        </p>
+                        <p class="txt_normales">
+                            <b>DOMICILIO</b>: <%= account.address1 %>, <%= account.address2 %>
+                        </p>
+                        <p class="txt_normales">
+                            <b>R.F.C.</b>: <%= client.rfc %>
+                        </p>
+                    </td>
+                    <td class="font10">
+                        <p class="txt_normales">
+                            <% account.contacts.forEach(function(contact){ %>
+                            <b>TEL&Eacute;FONO</b>
+                            FIJO(<% if (contact.contactMeanName == "fixedPhone") { %><b>X</b><% } else { %>&nbsp; <% } %>)
+                            CELULAR(<% if (contact.contactMeanName == "mobilePhone") { %><b>X</b><% } else { %>&nbsp;
+                            <% } %>)
+                            : <%= contact.value %>
+                            <% }); %>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <table class="receipt" style="width: 100%;">
+                <tr class="con_borde">
+                    <td class="font10 bold con_borde_derecha centrar_vertical" style="width: 50%;">
+                        <p class="txt_normales alinear_centro">
+                            PLAN
+                        </p>
+                    </td>
+                    <td class="font10">
+                        <p class="txt_normales">
+                            <b>PAGO TOTAL MENSUAL</b>:
+                            <span style="font-size: 130%;"><b><%= account.total %></b></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="con_borde">
+                    <td class="font10 con_borde_derecha centrar_vertical" style="width: 50%;">
+                        <p class="txt_normales text-center">&nbsp; <%= account.productName %></p>
+                        <p class="txt_normales">
+                            <b>TIPO:</b> <%= account.type.name %>
+                        </p>
+                        <p class="txt_normales">
+                            <b>VELOCIDAD CONTRATADA (Internet Mbps):</b> <%= account.productSpecifications.speedDown %> x
+                            <%= account.productSpecifications.speedUp %>
+                        </p>
+                        <p class="txt_normales font7 bold alinear_justificado">
+                            El ancho de banda o Mbps, contratado se repartir&aacute; entre los aparatos conectados simult&aacute;neamente.
+                        </p>
+                        <p class="txt_normales">
+                            <b>LLAMADAS (Telefon&iacute;a fija):</b> <span class="font7">Ilimitada sujeto a Pol&iacute;ticas de Uso
+                                Justo</span>
+                        </p>
+                        <p class="txt_normales">
+                            <b>N&Uacute;MERO TELEF&Oacute;NICO ASIGNADO:</b>&nbsp;
+                            <% if (typeof account.phone === 'string' && account.phone.length > 0) { %>
+                            <%= account.phone %>
+                            <% } else { %>
+                            &nbsp;
+                            <% } %>
+                        </p>
+                    </td>
+                    <td class="font10 con_borde_derecha" style="width: 50%;">
+                        <p class="txt_normales bold alinear_centro">
+                            <b>FORMA DE PAGO</b>
+                        </p>
+                        <p class="txt_normales">
+                            &nbsp;
+                        </p>
+                        <p class="txt_normales">
+                            <div style="width: 30mm; height: auto; float: left; margin-left: 2mm;">EFECTIVO</div>
+                            (<% if (client.businessData.paymentForm === '01') { %>X<% } else { %>&nbsp;<% } %>)
+                        </p>
+                        <p class="txt_normales">
+                            <div style="width: 30mm; height: auto; float: left; margin-left: 2mm;">TRANSFERENCIA</div>
+                            (<% if (client.businessData.paymentForm === '03') { %>X<% } else { %>&nbsp;<% } %>)
+                        </p>
+                        <p class="txt_nomrales">
+                            <div style="width: 30mm; height: auto; float: left; margin-left: 2mm;">TARJETA CR&Eacute;DITO</div>
+                            (<% if (client.businessData.paymentForm === '04') { %>X<% } else { %>&nbsp;<% } %>)
+                        </p>
+                        <p class="txt_nomrales">
+                            <div style="width: 30mm; height: auto; float: left; margin-left: 2mm;">TARJETA D&Eacute;BITO</div>
+                            (<% if (client.businessData.paymentForm === '28') { %>X<% } else { %>&nbsp;<% } %>)
+                        </p>
+                        <% if (client.businessData.paymentForm === '04' || client.businessData.paymentForm === '28' || client.businessData.paymentForm === '03') { %>
+                        <p class="txt_nomrales">
+                            <div style="width: 15mm; height: auto; float: left; margin-left: 2mm;">&nbsp;</div>
+                            <b>DEP&Oacute;SITO CUENTA NO.</b>: <%= client.businessData.issuingAccountNumber %>
+                        </p>
+                        <p class="txt_nomrales">
+                            <div style="width: 15mm; height: auto; float: left; margin-left: 2mm;">&nbsp;</div>
+                            <b>BANCO</b>: <%= client.businessData.issuingBankName %>
+                        </p>
+                        <% } %>
+                        <p class="txt_nomrales">
+                            &nbsp;
+                        </p>
+                        <p class="txt_nomrales" style="margin-left: 2mm;">
+                            REFERENCIA DE PAGO BANCO DEL BAJ&Iacute;O: <%= account.paymentReferences[0] || '------' %>
+                        </p>
+                        <p class="txt_nomrales" style="margin-left: 2mm;">
+                            REFERENCIA DE PAGO BANCOMER: <%= account.paymentReferences[1] || '------' %>
+                        </p>
+                        <p class="txt_nomrales" style="margin-left: 2mm;">
+                            CONVENIO CIE BANCOMER: <b>1434632</b>
+                        </p>
+                        <p class="txt_nomrales">
+                            &nbsp;
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <table class="receipt" style="width: 100%;">
+                <tr class="con_borde">
+                    <td class="font10 con_borde_derecha" style="width: 50%;">
+                        <p class="txt_normales alinear_centro bold">
+                            EQUIPO ENTREGADO EN COMODATO
+                        </p>
+                        <p class="txt_nomrales">
+                            &nbsp;
+                        </p>
+                        <p class="txt_normales" style="margin-left: 2mm;">
+                            <% odx.installedEquipment.forEach(function(equipment){ %>
+                                <p class="txt_nomrales" style="margin-left: 2mm;"><%= equipment.name %></p></br>
+                            <% }); %>
+                        </p>
+                    </td>
+                    <td class="font10 con_borde_derecha" style="width: 50%;">
+                        <p class="txt_normales alinear_centro bold">
+                            INSTALACI&Oacute;N
+                        </p>
+                        <p class="txt_nomrales">
+                            &nbsp;
+                        </p>
+                        <p class="txt_normales">
+                            <b>LUGAR DE INSTALACI&Oacute;N:</b>
+                            <%= account.address1 %>, <%= account.address2 %>
+                        </p>
+                        <p class="txt_normales">
+                            <b>COORDENADAS:</b> <%= account.address.latitude %>,<%= account.address.longitude %>
+                        </p>
+                        <p class="txt_normales">
+                            <b>FECHA DE INSTALACI&Oacute;N:</b>&nbsp;
+                            <% if (typeof odx.startedAt === 'string' && odx.startedAt.length > 0) { %>
+                            <%= odx.startedAt %>
+                            <% } else { %>
+                            &nbsp;
+                            <% } %>
+                        </p>
+                        <p class="txt_normales">
+                            <b>COSTO DE INSTALACI&Oacute;N:</b>&nbsp;$10,000.00
+                        </p>
+                        <p class="txt_normales">
+                            <b>PAGADO:</b>&nbsp;
+                            <% if (typeof odx.installation.cost === 'string' && odx.installation.cost.length > 0) { %>
+                            <%= odx.installation.cost %>
+                            <% } else { %>
+                            $0.00
+                            <% } %>
+                        </p>
+                        <p class="txt_normales">
+                            <% if (typeof odx.installation.costInText === 'string' && odx.installation.costInText.length > 0) { %>
+                            (<%= odx.installation.costInText %>)
+                            <% } %>
+                        </p>
+                        <p class="txt_normales">
+                            <b>CONDONADO POR PLAZO:</b>&nbsp;<%= odx.installation.difference %>
+                        </p>
+                        <table class="font10 con_borde_sup">
+                            <tr>
+                                <td colspan="2">
+                                    <p class="txt_normales font7 bold alinear_centro">
+                                        VIGENCIA
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50%;">
+                                    <p class="txt_normales">
+                                        PLAZO INDEFINIDO
+                                        (<% if (account.isForcedTerm && account.forcedTermValue === '0') { %><b>X</b><% } else { %>&nbsp<% } %>)
+                                    </p>
+                                </td>
+                                <td>
+                                    <p class="txt_normales">
+                                        FORZOSO
+                                        (<% if (account.isForcedTerm && account.forcedTermValue != '0') { %><b>X</b><% } else { %>&nbsp<% } %>)
+                                    </p>
+                                    <p class="txt_normales">
+                                        (<% if (account.isForcedTerm && account.forcedTermValue === '06') { %><b>X</b><% } else { %>&nbsp<% } %>)
+                                        6 MESES
+                                    </p>
+                                    <p class="txt_normales">
+                                        (<% if (account.isForcedTerm && account.forcedTermValue === '12') { %><b>X</b><% } else { %>&nbsp<% } %>)
+                                        12 MESES
+                                    </p>
+                                    <p class="txt_normales">
+                                        (<% if (account.isForcedTerm && account.forcedTermValue === '18') { %><b>X</b><% } else { %>&nbsp<% } %>)
+                                        18 MESES
+                                    </p>
+                                    <p class="txt_normales">
+                                        (<% if (account.isForcedTerm && account.forcedTermValue === '24') { %><b>X</b><% } else { %>&nbsp<% } %>)
+                                        24 MESES
+                                    </p>
+                                    <p class="txt_normales">
+                                        (<% if (account.isForcedTerm && account.forcedTermValue === '36') { %><b>X</b><% } else { %>&nbsp<% } %>)
+                                        36 MESES
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <p class="txt_normales">
+                                        <b>NOMBRE DEL INSTALADOR</b>:
+                                        <%= odx.technicalUser.name %>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <table class="receipt" style="width: 100%;">
+                <tr class="con_borde">
+                    <td class="font10">
+                        <p class="txt_normales bold alinear_centro font7">
+                            CONSIDERACIONES
+                        </p>
+                        <ol class="txt_normales alinear_justificado" style="padding-left: 3mm;">
+                            <li>&ldquo;EL PROVEEDOR&rdquo; deber&aacute; efectuar las instalaciones y empezar a prestar el servicio motivo del
+                                presente
+                                contrato dentro de un plazo que no exceda de 10 d&iacute;as naturales posteriores a su firma.
+                            </li>
+                            <li>A partir de que &ldquo;EL SUSCRIPTOR&rdquo; cuente con el servicio se empezar&aacute; a cobrar la mensualidad,
+                                dependiendo de la fecha de inicio de servicio, ser&aacute; total o parcialmente la mensualidad
+                                correspondiente &uacute;nicamente al periodo utilizado.
+                            </li>
+                            <li>En caso de existir imposibilidad f&iacute;sica o t&eacute;cnica para la instalaci&oacute;n del servicio, este
+                                contrato no
+                                tendr&aacute; validez alguna, por lo que se dar&aacute; por terminado, sin perjuicio alguno para &ldquo;EL
+                                SUSCRIPTOR&rdquo;,
+                                &ldquo;EL PROVEEDOR&rdquo; deber&aacute; de realizar la devoluci&oacute;n de todas las cantidades dadas por adelantado
+                                dentro
+                                de los 10 d&iacute;as naturales siguientes en que se determine dicho supuesto, sin que exista
+                                posibilidad
+                                de pr&oacute;rroga para &ldquo;EL PROVEEDOR&rdquo;.
+                            </li>
+                            <li>&ldquo;EL SUSCRIPTOR&rdquo; conviene en permitir el acceso a su domicilio con previo aviso por parte de
+                                &ldquo;EL
+                                PROVEEDOR&rdquo;, a los operativos y empleados de este en donde se encuentren las instalaciones,
+                                previa
+                                presentaci&oacute;n de su credencial o tarjeta de identificaci&oacute;n, a los operativos y empleados de
+                                &ldquo;EL
+                                PROVEEDOR&rdquo;, para efecto de inspecci&oacute;n, modificaci&oacute;n o mantenimiento de las instalaciones en
+                                su caso.
+                            </li>
+                            <li>Para verificar la autenticidad de las credenciales de los operativos y empleados, &ldquo;EL
+                                SUSCRIPTOR&rdquo;,
+                                deber&aacute; llamar al tel&eacute;fono del &ldquo;EL PROVEEDOR&rdquo;.
+                            </li>
+                            <li>El ancho de banda contratado se repartir&aacute; entre los aparatos conectados
+                                simult&aacute;neamente.
+                            </li>
+                        </ol>
+                        <p class="txt_normales">
+                            La velocidad contratada estar&aacute; comprendida entre el modem y el primer punto de acceso a la red
+                            de
+                            &ldquo;EL PROVEEDOR&rdquo;.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <% if (false) { %>
+            <table class="receipt" style="width: 100%;">
+                <tr class="con_borde">
+                    <td class="font10">
+                        <p class="txt_normales bold alinear_centro font7">
+                            AUTORIZACI&Oacute;N PARA CARGO DE TARJETA DE CREDITO O DEBITO
+                        </p>
+                        <p class="txt_normales alinear_justificado">
+                            Por medio de la presente autorizo a &ldquo;EL PROVEEDOR&rdquo;, para que cargue a mi tarjeta de cr&eacute;dito o
+                            d&eacute;bito,
+                            la cantidad por concepto de servicios que mensualmente me presta y en su caso el costo del
+                            Equipo
+                            adquirido, la vigencia de los cargos ser&aacute; por __________________ meses.
+                            <br>
+                            No. de Tarjeta _____________________________________________. <br>
+                            Instituci&oacute;n Bancaria _________________________________________. <br>
+                        </p>
+                        <p class="txt_normales bold alinear_centro font7">Firma de "EL SUSCRIPTOR"
+                            ____________________________</p>
+                    </td>
+                </tr>
+            </table>
+            <% } %>
+            <table class="receipt" style="width: 100%;">
+                <tr class="con_borde">
+                    <td class="font10">
+                        <p class="txt_normales bold alinear_centro font7">
+                            AUTORIZACI&Oacute;N PARA USO DE CORREO ELECTR&Oacute;NICO
+                        </p>
+                        <p class="txt_normales">
+                            <b>&ldquo;EL SUSCRIPTOR&rdquo; SI ( X ) NO ( )</b> acepta que su factura le sea notificada por correo
+                            electr&oacute;nico.
+                            <br>
+                            En caso de aceptar el correo electr&oacute;nico es el siguiente: <b><%= client.email %></b><br>
+                            <b>&ldquo;EL SUSCRIPTOR&rdquo; SI ( X ) NO ( )</b> acepta que a carta de derechos m&iacute;nimos le sea enviada por
+                            correo electr&oacute;nico. <br>
+                            En caso de aceptar el correo electr&oacute;nico es el siguiente: <b><%= client.email %></b><br><br>
+                        </p>
+                        <p class="txt_normales bold alinear_centro font7">Firma de "EL SUSCRIPTOR"
+                            ____________________________</p>
+                    </td>
+                </tr>
+            </table>
+            <table class="receipt" style="width: 100%;">
+                <tr class="con_borde">
+                    <td class="font10">
+                        <p class="txt_normales bold alinear_centro font7">
+                            AUTORIZACI&Oacute;N PARA USO DE INFORMACI&Oacute;N
+                        </p>
+                        <p class="txt_normales alinear_justificado">
+                            <b>&ldquo;EL SUSCRIPTOR&rdquo; SI ( ) NO ( )</b> acepta que su informaci&oacute;n sea cedida o transmitida por el
+                            proveedor a terceros, con fines mercadot&eacute;cnicos o publicitarios. <br>
+                        </p>
+                        <p class="txt_normales bold alinear_centro font7">Firma de "EL SUSCRIPTOR"
+                            ____________________________</p>
+                    </td>
+                </tr>
+            </table>
+            <table class="receipt" style="width: 100%;">
+                <tr class="con_borde">
+                    <td class="font10">
+                        <p class="txt_normales bold alinear_centro font7">
+                            SECCI&Oacute;N BUR&Oacute; DE CR&Eacute;DITO
+                        </p>
+                        <p class="txt_normales alinear_justificado">
+                            Por este medio autorizo expresamente a Domain, S. DE R.L. DE C.V.; para que por conducto de sus
+                            funcionarios facultados lleve a cabo investigaciones sobre m&iacute; comportamiento crediticio o el de
+                            la
+                            Empresa que represento en las Sociedades de Informaci&oacute;n Crediticia que estime conveniente.
+                            Asimismo,
+                            declaro que conozco la naturaleza y alcance de la informaci&oacute;n que se solicitar&aacute;, del uso que
+                            Domain, S.
+                            DE R.L. DE C.V. har&aacute; de tal informaci&oacute;n y de que &eacute;sta podr&aacute; realizar consultas peri&oacute;dicas de mi
+                            historial crediticio o el de la Empresa que represento, consintiendo que esta autorizaci&oacute;n se
+                            encuentre
+                            vigente por un per&iacute;odo de 3 años contados a partir de la fecha de su expedici&oacute;n y en todo caso,
+                            durante
+                            el tiempo que mantengamos relaci&oacute;n jur&iacute;dica.
+                        </p>
+                        <br>
+                        <p class="txt_normales alinear_justificado">
+                            En caso de que la solicitante sea una Persona Moral, declaro bajo protesta de decir verdad ser
+                            Representante Legal de la empresa mencionada en esta autorizaci&oacute;n; manifiesto que a la fecha de
+                            firma de
+                            la presente autorizaci&oacute;n no me han sido revocados, limitados, ni modificados en forma alguna.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <table class="receipt">
+                <tr class="con_borde">
+                    <td colspan="2">
+                        <p class="txt_normales font7">
+                            <b>Nombre del Cliente</b>: <%= client.businessData.businessName %>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="con_borde">
+                    <td colspan="2">
+                        <p class="txt_normales font7">
+                            <b>Nombre del Representante Legal (En caso de ser persona moral)</b>: <%= client.firstName %>
+                            <%= client.lastName %>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="con_borde">
+                    <td class="con_borde_derecha" style="width: 50%;">
+                        <p class="txt_normales font7">
+                            <b>Registro Federal de Contribuyentes</b>: <%= client.rfc %>
+                        </p>
+                    </td>
+                    <td style="width: 50%;">
+                        <p class="txt_normales font7">
+                            <b>Tel&eacute;fono</b>:
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <table class="receipt">
+                <tr class="con_borde">
+                    <td class="con_borde_derecha">
+                        <p class="txt_normales font7">
+                            <b>Domicilio (Calle y n&uacute;mero)</b>: <%= account.address.street %>
+                            <%= account.address.outdoorNumber %>
+                            <% if (typeof account.address.interiorNumber === 'string' && account.address.interiorNumber.length > 0) { %>Int.
+                            <%= account.address.interiorNumber %><% } %>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <table class="receipt">
+                <tr class="con_borde">
+                    <td class="con_borde_derecha" style="width: 50%;">
+                        <p class="txt_normales font7">
+                            <b>Colonia</b>: <%= account.address.extraDetails.name %>
+                        </p>
+                    </td>
+                    <td style="width: 50%;">
+                        <p class="txt_normales font7">
+                            <b>Delegaci&oacute;n o Municipio</b>: <%= account.address.extraDetails.town.name %>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="con_borde">
+                    <td class="con_borde_derecha" style="width: 50%;">
+                        <p class="txt_normales font7">
+                            <b>Ciudad</b>: <%= account.address.extraDetails.town.name %>
+                        </p>
+                    </td>
+                    <td style="width: 50%;">
+                        <p class="txt_normales font7">
+                            <b>Entidad</b>: <%= account.address.extraDetails.state.name %>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="con_borde">
+                    <td class="con_borde_derecha" style="width: 50%;">
+                        <p class="txt_normales bold font7">
+                            No. de Cuenta: <%= account.accountNumber %>
+                        </p>
+                    </td>
+                    <td style="width: 50%;">
+                        <p class="txt_normales bold font7">
+                            
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <table class="receipt" style="width: 100%;">
+                <tr class="con_borde">
+                    <td class="font10">
+                        <p class="txt_normales alinear_justificado">
+                            Estoy consciente y acepto que este documento quede bajo propiedad de Domain, S. DE R.L. DE C.V.
+                            y/o
+                            Sociedad de Informaci&oacute;n Crediticia consultada para efectos de control y cumplimiento del
+                            art&iacute;culo 28 de
+                            la Ley para Regular a Las Sociedades de Informaci&oacute;n Crediticia.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="font10">
+                        <p class="txt_normales bold font7" style="border: solid 1px #000; width: 178mm; height: 12mm;">
+                            &nbsp;&nbsp;Nombre y Firma (aut&oacute;grafa) del Cliente o Representante Legal
+                        </p>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td class="font10">
+                        <table class="receipt" style="width: 132mm; margin-left: 2mm;">
+                            <tr class="con_borde" style="background-color: #c3c3c3">
+                                <td class="font10">
+                                    <p class="txt_normales bold font7">
+                                        Para uso exclusivo de Domain, S. DE R.L. DE C.V.
+                                    </p>
+                                </td>
+                                <td class="font10">
+                                    <p class="txt_normales bold font7" style="text-align: right;">
+                                        &Aacute;rea de Cr&eacute;dito
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="receipt" style="width: 132mm; margin-left: 2mm;">
+                            <tr class="con_borde">
+                                <td class="font10 con_borde_derecha" style="width: 36mm;">
+                                    <p class="txt_normales bold font7">
+                                        Folio de consulta BC:
+                                    </p>
+                                </td>
+                                <td class="font10">
+                                    <p class="txt_normales bold font7" style="text-align: right;">
+                                        &nbsp;
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <div class="hoja2"></div>
+    </div>
+    <div style="clear: both;"></div>
+</body>
+
+</html>

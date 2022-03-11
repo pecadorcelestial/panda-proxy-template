@@ -1,0 +1,269 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    font-family: arial, sans-serif;
+}
+
+@page {
+    size: letter;
+    margin: 5mm 5mm 5mm 5mm;
+}
+
+table {
+    font-family: arial, sans-serif;
+    table-layout: fixed;
+}
+
+td {
+    padding: 3px 0px;
+}
+
+#header {
+    padding-bottom: 1mm;
+    border-bottom: solid 1px #000;
+}
+
+#header img {
+    width: 181px;
+}
+
+#pre_footer img {
+    width: 118px;
+}
+
+#footer-cont img {
+    width: 27px;
+}
+
+.arrow_container img {
+    width: 7px;
+}
+
+table, body {
+    width: 100%;
+    font-size: 11pt;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.red_bg {
+    background: #e50507;
+}
+
+.black_bg {
+    background: black;
+    padding: 3px;
+}
+
+.white {
+    color: white;
+}
+
+.red {
+    color: #e50507;
+}
+
+.border_bottom_red {
+    border-bottom: dotted 1px #e50507;
+}
+
+.border_top_red {
+    border-top: dotted 1px #e50507;
+}
+
+.border_top_black {
+    border-top: dashed 1px black;
+}
+
+.v-align-bottom {
+    vertical-align: bottom;
+}
+
+.v-align-top {
+    vertical-align: top;
+}
+
+.black_border {
+    border: solid 1px black;
+}
+
+.padded {
+    padding: 3px;
+}
+
+.padded-right {
+    padding-right: 6px;
+}
+
+.padded-left {
+    padding-left: 10px;
+}
+
+.font4 {
+    font-size: 6px !important;
+}
+
+.font5 {
+    font-size: 7px !important;
+}
+
+.font6 {
+    font-size: 8px !important;
+}
+
+.font7 {
+    font-size: 9px !important;
+}
+
+.font8 {
+    font-size: 11px !important;
+}
+
+.font9 {
+    font-size: 12px !important;
+}
+
+.font14 {
+    font-size: 19px !important;
+}
+
+#reference-footer {
+    padding: 10px 0;
+}
+
+.padding-top {
+    padding-top: 30px !important;
+}
+
+.padding-bottom {
+    padding-bottom: 30px !important;
+}
+
+.table-container {
+    width: 70%;
+    display: inline-block;
+}
+
+.image-container {
+    width: 29%;
+    display: inline-block;
+}
+
+.all_width {
+    display: block;
+    width: 100%;
+    clear: both;
+}
+
+.border_red {
+    border: solid #e50507 1px;
+}
+
+.small-column {
+    width: 10% !important;
+}
+
+.big-column {
+    width: 50% !important;
+}
+
+#logo-bottom {
+    width: 130px;
+}
+
+#concept-container {
+    min-height: 300px;
+}
+
+#concept-container::after {
+    content: "";
+    background: url(../../images/invoices/logo_gris.png) no-repeat;
+    background-position: center center;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    top: -50px;
+    position: absolute;
+    z-index: -1;
+}
+
+#concept-container::after {
+    content: "";
+    background: url(../../images/invoices/logo_gris.png) no-repeat;
+    background-position: center center;
+    filter: grayscale(100%);
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    top: -130px;
+    position: absolute;
+    z-index: -1;
+}
+
+.mas_padding {
+    padding: 2mm;
+}
+
+.linea_separador {
+    width: 100%;
+    height: 0.5mm;
+    padding-bottom: 1mm;
+    border-bottom: solid 1px #000;
+}
+
+.mini-column {
+    width: 1mm !important;
+}
+
+.menos_padding {
+    padding: -2mm;
+}
+
+.cortar_texto {
+    word-wrap: break-word;
+}
+
+.sin_padding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.cadenas_sat {
+    text-align: justify;
+    word-break: break-all;
+    line-height: 0;
+}
+
+.float-right {
+    text-align: right !important;
+    float: right !important;
+}
+
+.txt-nota-cred {
+    font-size: 26pt !important;
+    color: #e50507 !important;
+    font-weight: bold !important;
+}

@@ -1,0 +1,711 @@
+{
+    "company": {
+        "name": "Domain"
+    },
+    "security": {
+        "cors": ["https://olimpo.domain.net", "http://olimpo.domain.net", "https://clientes.domain.net", "https://sc.domain.net", "https://movilidad.domain.com", "http://movilidad.domain.com", "http://ecarptt.mx"]
+    },
+    "token": {
+        "domain": "domain.net",
+        "name": "ientcToken",
+        "maxAge": 43200
+    },
+    "jwt": {
+        "secret": "A-D0s-M4n0s",
+        "expiresIn": "1d",
+        "audience": "*.domain.net",
+        "issuer": "proxy.domain.net"
+    },
+    "services": {
+        "domain": {
+            "authentication": "http://testing.domain.mx/api/user_login/",
+            "accounts": {
+                "getAccounts": "http://192.168.0.62:7099/accounts",
+                "postAccounts": "http://192.168.0.62:7099/accounts",
+                "getAccount": "http://192.168.0.62:7099/account",
+                "postAccount": "http://192.168.0.62:7099/account",
+                "putAccount": "http://192.168.0.62:7099/account",
+                "deleteAccount": "http://192.168.0.62:7099/account",
+                "status": {
+                    "getStatuses": "http://192.168.0.62:7099/statuses",
+                    "getStatus": "http://192.168.0.62:7099/status",
+                    "postStatus": "http://192.168.0.62:7099/status",
+                    "putStatus": "http://192.168.0.62:7099/status",
+                    "deleteStatus": "http://192.168.0.62:7099/status"
+                },
+                "language": {
+                    "getLanguages": "http://192.168.0.62:7099/languages",
+                    "getLanguage": "http://192.168.0.62:7099/language",
+                    "postLanguage": "http://192.168.0.62:7099/language",
+                    "putLanguage": "http://192.168.0.62:7099/language",
+                    "deleteLanguage": "http://192.168.0.62:7099/language"
+                },
+                "forcedTerm": {
+                    "getForcedTerms": "http://192.168.0.62:7099/forcedTerms",
+                    "getForcedTerm": "http://192.168.0.62:7099/forcedTerm",
+                    "postForcedTerm": "http://192.168.0.62:7099/forcedTerm",
+                    "putForcedTerm": "http://192.168.0.62:7099/forcedTerm",
+                    "deleteForcedTerm": "http://192.168.0.62:7099/forcedTerm"
+                },
+                "types": {
+                    "getTypes": "http://192.168.0.62:7099/types",
+                    "getType": "http://192.168.0.62:7099/type",
+                    "postType": "http://192.168.0.62:7099/type",
+                    "putType": "http://192.168.0.62:7099/type",
+                    "deleteType": "http://192.168.0.62:7099/type"
+                },
+                "paymentReferences": {
+                    "getPaymentReferences": "http://192.168.0.62:7099/paymentReferences",
+                    "getPaymentReference": "http://192.168.0.62:7099/paymentReference",
+                    "postPaymentReference": "http://192.168.0.62:7099/paymentReference",
+                    "putPaymentReference": "http://192.168.0.62:7099/paymentReference",
+                    "deletePaymentReference": "http://192.168.0.62:7099/paymentReference"
+                },
+                "promos": {
+                    "getPromos": "http://192.168.0.62:7099/promos",
+                    "getPromo": "http://192.168.0.62:7099/promo",
+                    "postPromo": "http://192.168.0.62:7099/promo",
+                    "putPromo": "http://192.168.0.62:7099/promo",
+                    "deletePromo": "http://192.168.0.62:7099/promo"
+                }
+            },
+            "addresses": {
+                "getAddresses": "http://192.168.0.62:7098/addresses",
+                "postAddresses": "http://192.168.0.62:7098/addresses",
+                "getAddressesByGeoLocation": "http://192.168.0.62:7098/addresses/byGeoNear",
+                "getAddress": "http://192.168.0.62:7098/address",
+                "postAddress": "http://192.168.0.62:7098/address",
+                "putAddress": "http://192.168.0.62:7098/address",
+                "deleteAddress": "http://192.168.0.62:7098/address",
+                "locations": {
+                    "getZipCodes": "http://192.168.0.62:7098/zipCodes",
+                    "getCountries": "http://192.168.0.62:7098/countries",
+                    "getStates": "http://192.168.0.62:7098/states",
+                    "getTowns": "http://192.168.0.62:7098/towns",
+                    "getSettlements": "http://192.168.0.62:7098/settlements"
+                }
+            },
+            "cdr": {
+                "cdrs": "http://192.168.0.154:7079/cdrs",
+                "cdr": "http://192.168.0.154:7079/cdr"
+            },
+            "clients": {
+                "getClients": "http://192.168.0.62:7097/clients",
+                "postClients": "http://192.168.0.62:7097/clients",
+                "getClient": "http://192.168.0.62:7097/client",
+                "postClient": "http://192.168.0.62:7097/client",
+                "putClient": "http://192.168.0.62:7097/client",
+                "deleteClient": "http://192.168.0.62:7097/client",
+                "status": {
+                    "getStatuses": "http://192.168.0.62:7097/statuses",
+                    "getStatus": "http://192.168.0.62:7097/status",
+                    "postStatus": "http://192.168.0.62:7097/status",
+                    "putStatus": "http://192.168.0.62:7097/status",
+                    "deleteStatus": "http://192.168.0.62:7097/status"
+                },
+                "priority": {
+                    "getPriorities": "http://192.168.0.62:7097/priorities",
+                    "getPriority": "http://192.168.0.62:7097/priority",
+                    "postPriority": "http://192.168.0.62:7097/priority",
+                    "putPriority": "http://192.168.0.62:7097/priority",
+                    "deletePriority": "http://192.168.0.62:7097/priority"
+                },
+                "files": {
+                    "postFiles": "http://192.168.0.62:7097/files",
+                    "deleteFiles": "http://192.168.0.62:7097/files"
+                }
+            },
+            "contacts": {
+                "getContacts": "http://192.168.0.62:7096/contacts",
+                "postContacts": "http://192.168.0.62:7096/contacts",
+                "getContact": "http://192.168.0.62:7096/contact",
+                "postContact": "http://192.168.0.62:7096/contact",
+                "putContact": "http://192.168.0.62:7096/contact",
+                "deleteContact": "http://192.168.0.62:7096/contact",
+                "contactMeans": {
+                    "getContactMeans": "http://192.168.0.62:7096/contactMeans",
+                    "getContactMean": "http://192.168.0.62:7096/contactMean",
+                    "postContactMean": "http://192.168.0.62:7096/contactMean",
+                    "putContactMean": "http://192.168.0.62:7096/contactMean",
+                    "deleteContactMean": "http://192.168.0.62:7096/contactMean"
+                }
+            },
+            "contracts": {
+                "getContracts": "http://192.168.0.62:7094/contracts",
+                "getContract": "http://192.168.0.62:7094/contract",
+                "postContract": "http://192.168.0.62:7094/contract",
+                "putContract": "http://192.168.0.62:7094/contract",
+                "deleteContract": "http://192.168.0.62:7094/contract"
+            },
+            "events": {
+                "getEvents": "http://192.168.0.62:7081/events",
+                "postEvent": "http://192.168.0.62:7081/event",
+                "putEvent": "http://192.168.0.62:7081/event",
+                "deleteEvent": "http://192.168.0.62:7081/event",
+                "types": {
+                    "getTypes": "http://192.168.0.62:7081/types",
+                    "getType": "http://192.168.0.62:7081/type",
+                    "postType": "http://192.168.0.62:7081/type",
+                    "putType": "http://192.168.0.62:7081/type",
+                    "deleteType": "http://192.168.0.62:7081/type"
+                }
+            },
+            "files" : {
+                "postFiles": "http://192.168.0.62:7084/files",
+                "deleteFiles": "http://192.168.0.62:7084/files",
+                "postFile": "http://192.168.0.62:7084/file",
+                "deleteFile": "http://192.168.0.62:7084/file"
+            },
+            "finance": {
+                "receipts": {
+                    "getReceipts": "http://192.168.0.62:7090/receipts",
+                    "getReceipt": "http://192.168.0.62:7090/receipt",
+                    "postReceipt": "http://192.168.0.62:7090/receipt",
+                    "postReceipts": "http://192.168.0.62:7090/receipts",
+                    "putReceipt": "http://192.168.0.62:7090/receipt",
+                    "deleteReceipt": "http://192.168.0.62:7090/receipt",
+                    "status": {
+                        "getStatuses": "http://192.168.0.62:7090/receipt/statuses",
+                        "getStatus": "http://192.168.0.62:7090/receipt/status",
+                        "postStatus": "http://192.168.0.62:7090/receipt/status",
+                        "putStatus": "http://192.168.0.62:7090/receipt/status",
+                        "deleteStatus": "http://192.168.0.62:7090/receipt/status"
+                    },
+                    "types": {
+                        "getTypes": "http://192.168.0.62:7090/receipt/types",
+                        "getType": "http://192.168.0.62:7090/receipt/type",
+                        "postType": "http://192.168.0.62:7090/receipt/type",
+                        "putType": "http://192.168.0.62:7090/receipt/type",
+                        "deleteType": "http://192.168.0.62:7090/receipt/type"
+                    },
+                    "getReceiptsTotal": "http://192.168.0.62:7090/receipts/total"
+                },
+                "currency": {
+                    "getCurrencies": "http://192.168.0.62:7090/currencies",
+                    "getCurrency": "http://192.168.0.62:7090/currency",
+                    "postCurrency": "http://192.168.0.62:7090/currency",
+                    "putCurrency": "http://192.168.0.62:7090/currency",
+                    "deleteCurrency": "http://192.168.0.62:7090/currency"
+                },
+                "internalAccounts": {
+                    "getInternalAccountNumbers": "http://192.168.0.62:7090/internalAccountNumbers",
+                    "getInternalAccountNumber": "http://192.168.0.62:7090/internalAccountNumber",
+                    "postInternalAccountNumber": "http://192.168.0.62:7090/internalAccountNumber",
+                    "putInternalAccountNumber": "http://192.168.0.62:7090/internalAccountNumber",
+                    "deleteInternalAccountNumber": "http://192.168.0.62:7090/internalAccountNumber"
+                },
+                "invoices": {
+                    "getInvoices": "http://192.168.0.62:7090/invoices",
+                    "postInvoices": "http://192.168.0.62:7090/invoices",
+                    "getInvoice": "http://192.168.0.62:7090/invoice",
+                    "postInvoice": "http://192.168.0.62:7090/invoice",
+                    "putInvoice": "http://192.168.0.62:7090/invoice",
+                    "deleteInvoice": "http://192.168.0.62:7090/invoice",
+                    "status": {
+                        "getStatuses": "http://192.168.0.62:7090/invoice/statuses",
+                        "getStatus": "http://192.168.0.62:7090/invoice/status",
+                        "postStatus": "http://192.168.0.62:7090/invoice/status",
+                        "putStatus": "http://192.168.0.62:7090/invoice/status",
+                        "deleteStatus": "http://192.168.0.62:7090/invoice/status"
+                    }
+                },
+                "payments": {
+                    "getPayments": "http://192.168.0.62:7090/payments",
+                    "getPayment": "http://192.168.0.62:7090/payment",
+                    "postPayment": "http://192.168.0.62:7090/payment",
+                    "postPayments": "http://192.168.0.62:7090/payments",
+                    "putPayment": "http://192.168.0.62:7090/payment",
+                    "deletePayment": "http://192.168.0.62:7090/payment",
+                    "status": {
+                        "getStatuses": "http://192.168.0.62:7090/payment/statuses",
+                        "getStatus": "http://192.168.0.62:7090/payment/status",
+                        "postStatus": "http://192.168.0.62:7090/payment/status",
+                        "putStatus": "http://192.168.0.62:7090/payment/status",
+                        "deleteStatus": "http://192.168.0.62:7090/payment/status"
+                    },
+                    "types": {
+                        "getTypes": "http://192.168.0.62:7090/payment/types",
+                        "getType": "http://192.168.0.62:7090/payment/type",
+                        "postType": "http://192.168.0.62:7090/payment/type",
+                        "putType": "http://192.168.0.62:7090/payment/type",
+                        "deleteType": "http://192.168.0.62:7090/payment/type"
+                    },
+                    "cardType": {
+                        "getTypes": "http://192.168.0.62:7090/payment/card/types",
+                        "getType": "http://192.168.0.62:7090/payment/card/type",
+                        "postType": "http://192.168.0.62:7090/payment/card/type",
+                        "putType": "http://192.168.0.62:7090/payment/card/type",
+                        "deleteType": "http://192.168.0.62:7090/payment/card/type"
+                    },
+                    "bank": {
+                        "getBanks": "http://192.168.0.62:7090/banks",
+                        "getBank": "http://192.168.0.62:7090/bank",
+                        "postBank": "http://192.168.0.62:7090/bank",
+                        "putBank": "http://192.168.0.62:7090/bank",
+                        "deleteBank": "http://192.168.0.62:7090/bank"
+                    },
+                    "getPaymentsTotal": "http://192.168.0.62:7090/payments/total",
+                    "getPayments4ReceiptTotal" :"http://192.168.0.62:7090/payments/receipt",
+                    "getPayments4ReceiptsTotal" :"http://192.168.0.62:7090/payments/receipts"
+                },
+                "openpay": {
+                    "transactions": {
+                        "getTransactions": "http://192.168.0.62:7090/openpay/transactions",
+                        "getTransaction": "http://192.168.0.62:7090/openpay/transaction",
+                        "postTransaction": "http://192.168.0.62:7090/openpay/transaction",
+                        "putTransaction": "http://192.168.0.62:7090/openpay/transaction",
+                        "deleteTransaction": "http://192.168.0.62:7090/openpay/transaction"
+                    }
+                },
+                "discounts": {
+                    "getDiscounts": "http://192.168.0.62:7090/discounts",
+                    "getDiscount": "http://192.168.0.62:7090/discount",
+                    "postDiscount": "http://192.168.0.62:7090/discount",
+                    "putDiscount": "http://192.168.0.62:7090/discount",
+                    "deleteDiscount": "http://192.168.0.62:7090/discount"
+                }
+            },
+            "generalSettings": {
+                "getGeneralSettings": "http://192.168.0.62:7085/generalSettings",
+                "getGeneralSetting": "http://192.168.0.62:7085/generalSetting",
+                "postGeneralSetting": "http://192.168.0.62:7085/generalSetting",
+                "putGeneralSetting": "http://192.168.0.62:7085/generalSetting",
+                "deleteGeneralSetting": "http://192.168.0.62:7085/generalSetting",
+                "taxRegimes": {
+                    "getTaxRegimes": "http://192.168.0.62:7085/taxRegimes",
+                    "getTaxRegime": "http://192.168.0.62:7085/taxRegime",
+                    "postTaxRegime": "http://192.168.0.62:7085/taxRegime",
+                    "putTaxRegime": "http://192.168.0.62:7085/taxRegime",
+                    "deleteTaxRegime": "http://192.168.0.62:7085/taxRegime"
+                }
+            },
+            "inventory": {
+                "movements": {
+                    "getMovements": "http://192.168.0.62:7087/movements",
+                    "postMovements": "http://192.168.0.62:7087/movements",
+                    "getMovement": "http://192.168.0.62:7087/movement",
+                    "postMovement": "http://192.168.0.62:7087/movement",
+                    "putMovement": "http://192.168.0.62:7087/movement",
+                    "deleteMovement": "http://192.168.0.62:7087/movement",
+                    "status": {
+                        "getStatuses": "http://192.168.0.62:7087/movement/statuses",
+                        "getStatus": "http://192.168.0.62:7087/movement/status",
+                        "postStatus": "http://192.168.0.62:7087/movement/status",
+                        "putStatus": "http://192.168.0.62:7087/movement/status",
+                        "deleteStatus": "http://192.168.0.62:7087/movement/status"
+                    },
+                    "types": {
+                        "getTypes": "http://192.168.0.62:7087/movement/types",
+                        "getType": "http://192.168.0.62:7087/movement/type",
+                        "postType": "http://192.168.0.62:7087/movement/type",
+                        "putType": "http://192.168.0.62:7087/movement/type",
+                        "deleteType": "http://192.168.0.62:7087/movement/type"
+                    }
+                }
+            },
+            "notifications": {
+                "email": {
+                    "postEmail": "http://192.168.0.62:7083/email"
+                },
+                "sms": {
+                    "getSMS": "http://192.168.0.62:7083/sms",
+                    "postSMS": "http://192.168.0.62:7083/sms"
+                }
+            },
+            "odx": {
+                "getODXS": "http://192.168.0.62:7093/odxs",
+                "getODX": "http://192.168.0.62:7093/odx",
+                "postODX": "http://192.168.0.62:7093/odx",
+                "putODX": "http://192.168.0.62:7093/odx",
+                "deleteODX": "http://192.168.0.62:7093/odx",
+                "evidence": {
+                    "getEvidence": "http://192.168.0.62:7093/odx/evidence",
+                    "postEvidence": "http://192.168.0.62:7093/odx/evidence",
+                    "putEvidence": "http://192.168.0.62:7093/odx/evidence",
+                    "deleteEvidence": "http://192.168.0.62:7093/odx/evidence"
+                },
+                "chargeDetails": {
+                    "getChargeDetails": "http://192.168.0.62:7093/odx/chargeDetails",
+                    "postChargeDetail": "http://192.168.0.62:7093/odx/chargeDetail",
+                    "putChargeDetail": "http://192.168.0.62:7093/odx/chargeDetail",
+                    "deleteChargeDetail": "http://192.168.0.62:7093/odx/chargeDetail",
+                    "types": {
+                        "getTypes": "http://192.168.0.62:7093/chargeDetail/types",
+                        "getType": "http://192.168.0.62:7093/chargeDetail/type",
+                        "postType": "http://192.168.0.62:7093/chargeDetail/type",
+                        "putType": "http://192.168.0.62:7093/chargeDetail/type",
+                        "deleteType": "http://192.168.0.62:7093/chargeDetail/type"
+                    }
+                },
+                "status": {
+                    "getStatuses": "http://192.168.0.62:7093/statuses",
+                    "getStatus": "http://192.168.0.62:7093/status",
+                    "postStatus": "http://192.168.0.62:7093/status",
+                    "putStatus": "http://192.168.0.62:7093/status",
+                    "deleteStatus": "http://192.168.0.62:7093/status"
+                },
+                "types": {
+                    "getTypes": "http://192.168.0.62:7093/types",
+                    "getType": "http://192.168.0.62:7093/type",
+                    "postType": "http://192.168.0.62:7093/type",
+                    "putType": "http://192.168.0.62:7093/type",
+                    "deleteType": "http://192.168.0.62:7093/type"
+                }
+            },
+            "products": {
+                "getProducts": "http://192.168.0.62:7088/products",
+                "getProduct": "http://192.168.0.62:7088/product",
+                "postProduct": "http://192.168.0.62:7088/product",
+                "putProduct": "http://192.168.0.62:7088/product",
+                "deleteProduct": "http://192.168.0.62:7088/product",
+                "alerts": {
+                    "getAlerts": "http://192.168.0.62:7088/product/alerts",
+                    "postAlert": "http://192.168.0.62:7088/product/alert",
+                    "putAlert": "http://192.168.0.62:7088/product/alert",
+                    "deleteAlert": "http://192.168.0.62:7088/product/alert"
+                },
+                "bundles": {
+                    "getBundles": "http://192.168.0.62:7088/product/bundles",
+                    "postBundle": "http://192.168.0.62:7088/product/bundle",
+                    "putBundle": "http://192.168.0.62:7088/product/bundle",
+                    "deleteBundle": "http://192.168.0.62:7088/product/bundle"
+                },
+                "specifications": {
+                    "getSpecifications": "http://192.168.0.62:7088/product/specifications",
+                    "postSpecification": "http://192.168.0.62:7088/product/specification",
+                    "putSpecification": "http://192.168.0.62:7088/product/specification",
+                    "deleteSpecification": "http://192.168.0.62:7088/product/specification"
+                },
+                "brands": {
+                    "getBrands": "http://192.168.0.62:7088/brands",
+                    "getBrand": "http://192.168.0.62:7088/brand",
+                    "postBrand": "http://192.168.0.62:7088/brand",
+                    "putBrand": "http://192.168.0.62:7088/brand",
+                    "deleteBrand": "http://192.168.0.62:7088/brand"
+                },
+                "categories": {
+                    "getCategories": "http://192.168.0.62:7088/categories",
+                    "getCategory": "http://192.168.0.62:7088/category",
+                    "postCategory": "http://192.168.0.62:7088/category",
+                    "putCategory": "http://192.168.0.62:7088/category",
+                    "deleteCategory": "http://192.168.0.62:7088/category"
+                },
+                "status": {
+                    "getStatuses": "http://192.168.0.62:7088/statuses",
+                    "getStatus": "http://192.168.0.62:7088/status",
+                    "postStatus": "http://192.168.0.62:7088/status",
+                    "putStatus": "http://192.168.0.62:7088/status",
+                    "deleteStatus": "http://192.168.0.62:7088/status"
+                },
+                "types": {
+                    "getTypes": "http://192.168.0.62:7088/types",
+                    "getType": "http://192.168.0.62:7088/type",
+                    "postType": "http://192.168.0.62:7088/type",
+                    "putType": "http://192.168.0.62:7088/type",
+                    "deleteType": "http://192.168.0.62:7088/type"
+                },
+                "altan": {
+                    "getProducts": "http://192.168.0.62:7088/products/altan",
+                    "postProducts": "http://192.168.0.62:7088/products/altan",
+                    "getProduct": "http://192.168.0.62:7088/product/altan",
+                    "postProduct": "http://192.168.0.62:7088/product/altan",
+                    "putProduct": "http://192.168.0.62:7088/product/altan",
+                    "deleteProduct": "http://192.168.0.62:7088/product/altan"
+                }
+            },
+            "prospects": {
+                "getProspects": "http://192.168.0.62:7095/prospects",
+                "getProspect": "http://192.168.0.62:7095/prospect",
+                "postProspect": "http://192.168.0.62:7095/prospect",
+                "putProspect": "http://192.168.0.62:7095/prospect",
+                "deleteProspect": "http://192.168.0.62:7095/prospect",
+                "status": {
+                    "getStatuses": "http://192.168.0.62:7095/statuses",
+                    "getStatus": "http://192.168.0.62:7095/status",
+                    "postStatus": "http://192.168.0.62:7095/status",
+                    "putStatus": "http://192.168.0.62:7095/status",
+                    "deleteStatus": "http://192.168.0.62:7095/status"
+                },
+                "types": {
+                    "getTypes": "http://192.168.0.62:7095/types",
+                    "getType": "http://192.168.0.62:7095/type",
+                    "postType": "http://192.168.0.62:7095/type",
+                    "putType": "http://192.168.0.62:7095/type",
+                    "deleteType": "http://192.168.0.62:7095/type"
+                },
+                "salesEventTypes": {
+                    "getTypes": "http://192.168.0.62:7095/salesEventTypes",
+                    "getType": "http://192.168.0.62:7095/salesEventType",
+                    "postType": "http://192.168.0.62:7095/salesEventType",
+                    "putType": "http://192.168.0.62:7095/salesEventType",
+                    "deleteType": "http://192.168.0.62:7095/salesEventType"
+                }
+            },
+            "public": {
+                "images": "https://proxy-dev.domain.net:3001/public"
+            },
+            "quotations": {
+                "getQuotations": "http://192.168.0.62:7094/quotations",
+                "getQuotation": "http://192.168.0.62:7094/quotation",
+                "postQuotation": "http://192.168.0.62:7094/quotation",
+                "putQuotation": "http://192.168.0.62:7094/quotation",
+                "deleteQuotation": "http://192.168.0.62:7094/quotation",
+                "items": {
+                    "getItems": "http://192.168.0.62:7094/quotation/items",
+                    "postItem": "http://192.168.0.62:7094/quotation/item",
+                    "putItem": "http://192.168.0.62:7094/quotation/item",
+                    "deleteItem": "http://192.168.0.62:7094/quotation/item"
+                },
+                "status": {
+                    "getStatuses": "http://192.168.0.62:7094/quotationStatuses",
+                    "getStatus": "http://192.168.0.62:7094/quotationStatus",
+                    "postStatus": "http://192.168.0.62:7094/quotationStatus",
+                    "putStatus": "http://192.168.0.62:7094/quotationStatus",
+                    "deleteStatus": "http://192.168.0.62:7094/quotationStatus"
+                },
+                "periodicity": {
+                    "getPeriodicities": "http://192.168.0.62:7094/periodicities",
+                    "getPeriodicity": "http://192.168.0.62:7094/periodicity",
+                    "postPeriodicity": "http://192.168.0.62:7094/periodicity",
+                    "putPeriodicity": "http://192.168.0.62:7094/periodicity",
+                    "deletePeriodicity": "http://192.168.0.62:7094/periodicity"
+                },
+                "forcedTerms": {
+                    "getForcedTerms": "http://192.168.0.62:7094/forcedTerms",
+                    "getForcedTerm": "http://192.168.0.62:7094/forcedTerm",
+                    "postForcedTerm": "http://192.168.0.62:7094/forcedTerm",
+                    "putForcedTerm": "http://192.168.0.62:7094/forcedTerm",
+                    "deleteForcedTerm": "http://192.168.0.62:7094/forcedTerm"
+                }
+            },
+            "schedule": {
+                "getSchedules": "http://192.168.0.62:7092/schedules",
+                "getSchedule": "http://192.168.0.62:7092/schedule",
+                "postSchedule": "http://192.168.0.62:7092/schedule",
+                "putSchedule": "http://192.168.0.62:7092/schedule",
+                "deleteSchedule": "http://192.168.0.62:7092/schedule"
+            },
+            "users": {
+                "getUsers": "http://192.168.0.62:7091/users",
+                "getUser": "http://192.168.0.62:7091/user",
+                "postUser": "http://192.168.0.62:7091/user",
+                "putUser": "http://192.168.0.62:7091/user",
+                "deleteUser": "http://192.168.0.62:7091/user",
+                "validate": "http://192.168.0.62:7091/user/validate",
+                "roles": {
+                    "getRoles": "http://192.168.0.62:7091/roles",
+                    "getRole": "http://192.168.0.62:7091/role",
+                    "postRole": "http://192.168.0.62:7091/role",
+                    "putRole": "http://192.168.0.62:7091/role",
+                    "deleteRole": "http://192.168.0.62:7091/role"
+                },
+                "departments": {
+                    "getDepartments": "http://192.168.0.62:7091/departments",
+                    "getDepartment": "http://192.168.0.62:7091/department",
+                    "postDepartment": "http://192.168.0.62:7091/department",
+                    "putDepartment": "http://192.168.0.62:7091/department",
+                    "deleteDepartment": "http://192.168.0.62:7091/department"
+                },
+                "modules": {
+                    "getModules": "http://192.168.0.62:7091/modules",
+                    "getModule": "http://192.168.0.62:7091/module",
+                    "postModule": "http://192.168.0.62:7091/module",
+                    "putModule": "http://192.168.0.62:7091/module",
+                    "deleteModule": "http://192.168.0.62:7091/module"
+                },
+                "status": {
+                    "getStatuses": "http://192.168.0.62:7091/statuses",
+                    "getStatus": "http://192.168.0.62:7091/status",
+                    "postStatus": "http://192.168.0.62:7091/status",
+                    "putStatus": "http://192.168.0.62:7091/status",
+                    "deleteStatus": "http://192.168.0.62:7091/status"
+                },
+                "clients": {
+                    "getUsers": "http://192.168.0.62:7091/users/clients",
+                    "getUser": "http://192.168.0.62:7091/user/client",
+                    "postUser": "http://192.168.0.62:7091/user/client",
+                    "putUser": "http://192.168.0.62:7091/user/client",
+                    "deleteUser": "http://192.168.0.62:7091/user/client",
+                    "validatePassword": "http://192.168.0.62:7091/user/client/validate"
+                }
+            }
+        },
+        "altan": {
+            "cdr": {
+                "getCDR": "https://apialt.domain.net/altan/cdrs"
+            },
+            "products": {
+                "getProducts": "https://apialt.domain.net/altan/products",
+                "getProduct": "https://apialt.domain.net/altan/product",
+                "posttProduct": "https://apialt.domain.net/altan/product",
+                "puttProduct": "https://apialt.domain.net/altan/product",
+                "deleteProduct": "https://apialt.domain.net/altan/product",
+                "types": {
+                    "getTypes": "https://apialt.domain.net/altan/products/types",
+                    "getType": "https://apialt.domain.net/altan/products/type",
+                    "postType": "https://apialt.domain.net/altan/products/type",
+                    "putType": "https://apialt.domain.net/altan/products/type",
+                    "deleteType": "https://apialt.domain.net/altan/products/type"
+                }
+            },
+            "apis": {
+                "getServiceAvailabitity": "https://apialt.domain.net/altan/service/availability",
+                "getClientProfile": "https://apialt.domain.net/altan/client/profile",
+                "postActivate": "https://apialt.domain.net/altan/activate",
+                "postInactivate": "https://apialt.domain.net/altan/inactivate",
+                "postResume": "https://apialt.domain.net/altan/resume",
+                "postPredeactivate": "https://apialt.domain.net/altan/predeactivate",
+                "postDeactivate": "https://apialt.domain.net/altan/deactivate",
+                "postReactivate": "https://apialt.domain.net/altan/reactivate",
+                "postPurchase": "https://apialt.domain.net/altan/purchase",
+                "getIMEIStatus": "https://apialt.domain.net/altan/imei/status",
+                "postIMEILock": "https://apialt.domain.net/altan/imei/lock",
+                "postIMEIUnlock": "https://apialt.domain.net/altan/imei/unlock",
+                "patchPropertiesUpdate": "https://apialt.domain.net/altan/properties/update",
+                "postBarring": "https://apialt.domain.net/altan/barring",
+                "postUnbarring": "https://apialt.domain.net/altan/unbarring",
+                "postPreregister": "https://apialt.domain.net/altan/preregister",
+                "batch": {
+                    "postBarring": "https://apialt.domain.net/altan/batch/barring",
+                    "postSuspend": "https://apialt.domain.net/altan/batch/suspend"
+                },
+                "view360": {
+                    "getOffers": "https://apialt.domain.net/altan/360/offers",
+                    "getSearchSubscriber": "https://apialt.domain.net/altan/360/search",
+                    "getProfile": "https://apialt.domain.net/altan/360/profile",
+                    "getDeviceInfo": "https://apialt.domain.net/altan/360/device",
+                    "getNetworkProfile": "https://apialt.domain.net/altan/360/networkProfile",
+                    "postAPN": "https://apialt.domain.net/altan/360/apnUpdate"
+                },
+                "managedServices": {
+                    "get": "https://apialt.domain.net/altan/managedServices",
+                    "post": "https://apialt.domain.net/altan/managedServices"
+                }
+            }
+        },
+        "sat": {
+            "cfdi": {
+                "version": "3.3",
+                "paymentComplement": {
+                    "version": "1.0"
+                },
+                "stamping": {
+                    "login": {
+                        "url": "https://api-facturacion.softas.mx/api/auth/login/",
+                        "email": "crm@domain.com",
+                        "password": "K3nw00d1"
+                    },
+                    "stamping": "https://api-facturacion.softas.mx/api/cfdi/timbrar/v2/",
+                    "startingFolio": 103000
+                },
+                "keys": {
+                    "infiniteToken": "T2lYQ0t4L0RHVkR4dHZ5Nkk1VHNEakZ3Y0J4Nk9GODZuRyt4cE1wVm5tbXB3YVZxTHdOdHAwVXY2NTdJb1hkREtXTzE3dk9pMmdMdkFDR2xFWFVPUXpTUm9mTG1ySXdZbFNja3FRa0RlYURqbzdzdlI2UUx1WGJiKzViUWY2dnZGbFloUDJ6RjhFTGF4M1BySnJ4cHF0YjUvbmRyWWpjTkVLN3ppd3RxL0dJPQ.T2lYQ0t4L0RHVkR4dHZ5Nkk1VHNEakZ3Y0J4Nk9GODZuRyt4cE1wVm5tbFlVcU92YUJTZWlHU3pER1kySnlXRTF4alNUS0ZWcUlVS0NhelhqaXdnWTRncklVSWVvZlFZMWNyUjVxYUFxMWFxcStUL1IzdGpHRTJqdS9Zakw2UGRoL2U4RjNucGxpSXQwZXFwWmNzcXBqa1QrMnVOQ2wzcmRBVy9wUGhVKzdGRkptSFIzYXNZcFlYOUVobkgvL1A1bTVjaThSOTJuaFVpNlFZYUFnNlRMZkQvN3BhTFlmNW1uNDU2bUcrRGZyZEwweUw4ZTVSQTQ5aVpqSERFUXpJc1ZiVnM2Y2wzS09nMnllN2xJQ3NxUG8vakxWWnpudWY5bDN1V1RBa0ZFU0ZWQ2xITlZTWWw1NnkzNy80akdlU0dwTzVGQ1VtY3MrQ2daVDNMTlM3d01kdXVON1pocnZrc2pKL2U0TzNUYkpBTFlUei80Q2lvZE9zaGErLzdwL3BYSm9mb29xZUNSZkF6eW1XM3drb21QbUFTTU5Vb1V2MkFwTGJjemFGaUdqUWFTZ01aTDdKRHQvTDY2cGh0S0JKeW9pMmdJS1pRSGdQNHVtL1JXMVNpNmxmVFRKRTFyb1VOVUVnRHB5MzhmZ2xOVGsyZEt4RDgyellSQ0hvUUdJM0QrUkttQUxjcTF2RVJzcG1RR3V3VlhRPT0.lqfEdX37Zhs8eFBML8FH7WLj2aaNoCcQbwgtSDH0Jrk"
+                },
+                "getStatus": "https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc?wsdl",
+                "getRelatedCFDIs": "http://services.sw.com.mx/relations/{RFC}/{UUID}",
+                "postCancellation": "http://services.sw.com.mx/cfdi33/cancel/{RFC}/{UUID}",
+                "postIssueJSON": "https://services.sw.com.mx/v3/cfdi33/issue/json/v4"
+            }
+        },
+        "openpay": {
+            "id": "mbmaawk5xs2xcca6yvyp",
+            "publicKey": "pk_dacb827c42254604b3f2e201aac81db5",
+            "privateKey": "sk_3afa76b51a944964a157971a0cae10a2",
+            "url": "https://sandbox-api.openpay.mx/v1/",
+            "dashboardURL": "https://sandbox-dashboard.openpay.mx"
+        },
+        "zendesk": {
+            "authorization": "Basic ZGV2QGllbnRjLmNvbS90b2tlbjozZklPek1rTVlwMDk5SDQ0SEEzT0l1NndRRjZCMnBsRHloUVM5Rjh4",
+            "clients": {
+                "getClient": "https://domain.zendesk.com/api/v2/search.json",
+                "postClient": "https://domain.zendesk.com/api/v2/users/create_or_update.json",
+                "deleteClient": "https://domain.zendesk.com/api/v2/users/{userId}.json"
+            },
+            "contacts": {
+                "postContact": "https://domain.zendesk.com/api/v2/end_users/{clientId}/identities.json"
+            },
+            "tickets": {
+                "postTicket": "https://domain.zendesk.com/api/v2/tickets.json",
+                "deleteTicket": "https://domain.zendesk.com/api/v2/tickets/{ticketId}.json"
+            }
+        },
+        "vectormax": {
+            "apis": {
+                "accounts": {
+                    "getAccounts": "http://192.168.0.62:7078/tv/accounts",
+                    "getAccount": "http://192.168.0.62:7078/tv/account",
+                    "postAccount": "http://192.168.0.62:7078/tv/account",
+                    "putAccount": "http://192.168.0.62:7078/tv/account",
+                    "deleteAccount": "http://192.168.0.62:7078/tv/account",
+                    "getUsers": "http://192.168.0.62:7078/tv/account/users",
+                    "postUser": "http://192.168.0.62:7078/tv/account/user",
+                    "putUser": "http://192.168.0.62:7078/tv/account/user",
+                    "deleteUser": "http://192.168.0.62:7078/tv/account/user",
+                    "deleteSubscriptions": "http://192.168.0.62:7078/tv/account/subscriptions",
+                    "postSubscription": "http://192.168.0.62:7078/tv/account/subscription",
+                    "deleteSubscription": "http://192.168.0.62:7078/tv/account/subscription",
+                    "postDevice": "http://192.168.0.62:7078/tv/account/device",
+                    "deleteDevice": "http://192.168.0.62:7078/tv/account/device"
+                },
+                "subscriptions": {
+                    "getSubscriptions": "http://192.168.0.62:7078/tv/subscriptions"
+                },
+                "roles": {
+                    "getRoles": "http://192.168.0.62:7078/tv/roles"
+                },
+                "devices": {
+                    "getDevices": "http://192.168.0.62:7078/tv/devices"
+                }
+            }
+        },
+        "mikrotik": {
+            "device": {
+                "host": "138.122.96.90",
+                "port": 8728,
+                "user": "desarrollo",
+                "password": "IENTCdesarrollo"
+            },
+            "apis": {
+                "users": {
+                    "getInfo": "/tool/user-manager/user",
+                    "postInfo": "/tool/user-manager/user",
+                    "putInfo": "/tool/user-manager/user"
+                },
+                "profiles": {
+                    "getInfo": "/tool/user-manager/profile",
+                    "postInfo": "/tool/user-manager/profile",
+                    "putInfo": "/tool/user-manager/profile"
+                }
+            }
+        },
+        "conekta": {
+            "apiKey": "key_6ZqvsS3hSqsVmmNhUFSAgw"
+        }
+    },
+    "google": {
+        "oAuth": {
+            "clientID": "351605103047-7ddhvg2n7b9amif3habo9eohnm9qch15.apps.googleusercontent.com",
+            "androidID": {
+                "ODXApp": "351605103047-i5p254bps62kkte0d6d0d6kctvbohfr5.apps.googleusercontent.com",
+                "SalesApp": "351605103047-g6g9d7e9bjcdmjhfiqp1tosp5kfg3ddh.apps.googleusercontent.com"
+            },
+            "clientSecret": "3Uka2q4hXsuw5XkGUUJWg19y",
+            "validDomains": ["domain.com", "domain.mx", "domain.net", "internetentuciudad.com", "ecar.mx"]
+        },
+        "maps": {
+            "clientID": "AIzaSyBpS-M3lktw6lmr24BBRel7K4Yl2MRWT7Y"
+        }
+    },
+    "files": {
+        "host": "192.168.0.62",
+        "port": "7084"
+    },
+    "contPAQi": {
+        "pendingTaxes": "210050002",
+        "transferredTaxes": "210050001",
+        "rent": "410000000"
+    },
+    "proxy": {
+        "url": "https://proxy-dev.domain.net:3001"
+    }
+}

@@ -1,0 +1,1209 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="generator" content="LibreOffice 4.2.8.2 (Linux)">
+    <meta name="created" content="0;0">
+    <meta name="changed" content="0;0">
+    <link rel="stylesheet" href="<%= publicPath %>/styles/receipts/html5reset-1.6.1.css">
+    <link rel="stylesheet" href="<%= publicPath %>/styles/odx/type_aContractMovil.css">
+
+</head>
+
+<body text="#000000">
+    <table cellspacing="0" cellpadding="0" border="0">
+        <tr>
+            <td>
+                <img src="<%= publicPath %>/images/odx/logo.jpg" style="width: 7cm;">
+            </td>
+            <td>
+                <p class="txt_titulos">
+                    Domain TELECOMUNICACIONES <br>
+                    Domain, S. DE R.L. DE C.V. <br>
+                    IEN110119SC9 <br>
+                    BLVD. BERNARDO QUINTANA No. 562 INT.7, <br>
+                    COL. ARBOLEDAS, QUER&Eacute;TARO, QRO.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr class="fondo_gris">
+            <td colspan="3" class="black_border">
+                <p class="txt_titulos_tbl">
+                    SUSCRIPTOR (<%= client.folio %>)
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 66.67mm;" class="black_border">
+                <p class="textos">
+                    <%= client.firstName %> <%= client.secondName %>
+                </p>
+            </td>
+            <td style="width: 66.66mm;" class="black_border">
+                <p class="textos">
+                    <%= client.firstLastName %>
+                </p>
+            </td>
+            <td style="width: 66.67mm;" class="black_border">
+                <p class="textos">
+                    <%= client.secondLastName %>
+                </p>
+            </td>
+        </tr>
+        <tr class="fondo_gris">
+            <td>
+                <p class="txt_subtitulos">
+                    Nombre
+                </p>
+            </td>
+            <td>
+                <p class="txt_subtitulos">
+                    Apellido Paterno
+                </p>
+            </td>
+            <td>
+                <p class="txt_subtitulos">
+                    Apellido Materno
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr class="fondo_gris">
+            <td class="black_border">
+                <p class="txt_titulos_tbl">
+                    DOMICILIO
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr>
+            <td style="width: 67mm !important;" class="black_border">
+                <p class="textos">
+                    <%= client.address.street %>
+                </p>
+            </td>
+            <td style="width: 10mm !important;" class="black_border">
+                <%= client.address.outdoorNumber %>
+            </td>
+            <td style="width: 10mm !important;" class="black_border">
+                <p class="textos">
+                    <%= client.address.interiorNumber %>
+                </p>
+            </td>
+            <td style="width: 34mm !important;" class="black_border">
+                <p class="textos">
+                    <%= client.address.extraDetails.name %>
+                </p>
+            </td>
+            <td style="width: 36mm !important;" class="black_border">
+                <p class="textos">
+                    <%= client.address.extraDetails.town.name %>
+                </p>
+            </td>
+            <td style="width: 27mm !important;" class="black_border">
+                <p class="textos">
+                    <%= client.address.extraDetails.state.name %>
+                </p>
+            </td>
+            <td style="width: 16mm;" class="black_border">
+                <p class="textos">
+                    <%= client.address.extraDetails.zipCode %>
+                </p>
+            </td>
+        </tr>
+        <tr class="fondo_gris">
+            <td style="width: 67mm;">
+                <p class="txt_subtitulos">
+                    Calle
+                </p>
+            </td>
+            <td style="width: 10mm;">
+                <p class="txt_subtitulos">
+                    #Ext.
+                </p>
+            </td>
+            <td style="width: 10mm;">
+                <p class="txt_subtitulos">
+                    #Int.
+                </p>
+            </td>
+            <td style="width: 34mm;">
+                <p class="txt_subtitulos">
+                    Colonia
+                </p>
+            </td>
+            <td style="width: 36mm;">
+                <p class="txt_subtitulos">
+                    Alcald&iacute;a/Municipio
+                </p>
+            </td>
+            <td style="width: 27mm;">
+                <p class="txt_subtitulos">
+                    Estado
+                </p>
+            </td>
+            <td style="width: 16mm;">
+                <p class="txt_subtitulos">
+                    C.P.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr>
+            <td class="black_border" style="width: 54mm !important;" colspan="2">
+                <p class="textos bold">
+                    TEL&Eacute;FONO
+                    <% account.contacts.forEach(function(contact){ %>
+                        Fijo <span class="marco_txt">&nbsp;<% if (contact.contactMeanName == "fixedPhone") { %>X<% } else { %>&nbsp;<% } %>&nbsp;</span>
+                        <% if (contact.contactMeanName == "fixedPhone") { %>
+                            <%= contact.value %>
+                        <% } %>
+                    <% }); %>
+                </p>
+            </td>
+            <td class="black_border fondo_gris" style="width: 9mm;">
+                <p class="txt_subtitulos">
+                    RFC
+                </p>
+            </td>
+            <td class="black_border" style="width: 80mm;">
+                <p class="textos">
+                    <%= client.businessData.rfc %>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 54mm !important;" colspan="2">
+                <p class="textos bold">
+                    TEL&Eacute;FONO
+                    <% account.contacts.forEach(function(contact){ %>
+                        M&oacute;vil <span class="marco_txt">&nbsp;<% if (contact.contactMeanName == "mobilePhone") { %>X<% } else { %>&nbsp;<% } %>&nbsp;</span>
+                        <% if (contact.contactMeanName == "mobilePhone") { %>
+                            <%= contact.value %>
+                        <% } %>
+                    <% }); %>
+                </p>
+            </td>
+            <td class="black_border fondo_gris" style="width: 9mm;">
+                &nbsp;
+            </td>
+            <td class="black_border" style="width: 80mm;">
+                &nbsp;
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr>
+            <td class="black_border fondo_gris" style="width: 65mm;">
+                <p class="textos bold">
+                    DOMICILIO DONDE SE PRESTAR&Aacute; EL SERVICIO
+                </p>
+            </td>
+            <td class="black_border" style="width: 127mm;">
+                <p class="textos">
+                    <%= account.address1 %>, <%= account.address2 %>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr class="fondo_gris">
+            <td colspan="5" class="black_border">
+                <p class="txt_titulos_tbl">
+                    SERVICIO DE TELEFON&Iacute;A M&Oacute;VIL
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 79mm;" class="fondo_gris black_border">
+                <p class="txt_subtitulos">
+                    DESCRIPCI&Oacute;N PAQUETE/OFERTA <br>
+                    (INCISO I Nom numeral 5.1.2.1)
+                </p>
+            </td>
+            <td style="width: 57mm;" class="fondo_gris" colspan="2">
+                <p class="txt_subtitulos">
+                    TARIFA
+                </p>
+                <p class="textos bold">
+                    FOLIO IFT: <%= product.folioIFT %>
+                </p>
+            </td>
+            <td style="width: 31mm;" class="black_border fondo_gris">
+                <p class="txt_subtitulos">
+                    FECHA DE PAGO <br>
+                    Modalidad Post Pago
+                </p>
+            </td>
+            <td style="width: 26mm;" class="black_border">
+                <p class="textos">
+                    &Uacute;ltimo d&iacute;a de cada mes.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 79mm;">
+                <p class="textos">
+                    <%= account.productName %>
+                </p>
+                <table style="margin: 5mm !important; width: 69mm !important;">
+                    <tr>
+                        <td class="black_border">
+                            <p class="txt_subtitulos">
+                                Miutos Incluidos
+                            </p>
+                        </td>
+                        <td class="black_border">
+                            <p class="textos">
+                                <%= product.specifications.minutes %>*
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="black_border">
+                            <p class="txt_subtitulos">
+                                SMS Incluidos
+                            </p>
+                        </td>
+                        <td class="black_border">
+                            <p class="textos">
+                                <%= product.specifications.sms %>*
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="black_border">
+                            <p class="txt_subtitulos">
+                                GB Incluidos
+                            </p>
+                        </td>
+                        <td class="black_border">
+                            <p class="textos">
+                                <%= product.specifications.data %>*
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p class="txt_subtitulos">
+                                * Sujeto a pol&iacute;tica de uso justo.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="width: 37mm;" class="fondo_gris black_border">
+                <p class="textos bold">
+                    Total mensualidad
+                </p>
+            </td>
+            <td style="width: 20mm;" class="black_border">
+                <p class="textos bold">
+                    $ <%= account.total %> M.N.
+                </p>
+            </td>
+            <td style="width: 31mm; vertical-align: top !important;" class="black_border" colspan="2" rowspan="2">
+                <div style="width: 100%; height: 7mm;" class="fondo_gris">
+                    <p class="txt_subtitulos">
+                        VIGENCIA Y PENALIDAD
+                    </p>
+                </div>
+                <p class="textos bold" style="padding-left: 8mm !important;">
+                    <% if ((account.isForcedTerm && account.forcedTermValue === '0') || account.forcedTermValue === '0') { %>
+                        <span class="marco_txt">&nbsp;X&nbsp;</span> Indefinido: <br><br>
+                        &bull; Sin Penalidad. <br><br>
+                        <span class="marco_txt">&nbsp; &nbsp;</span> Plazo m&aacute;ximo <u>---</u> meses: <br><br>
+                        &bull; Pagando el 20% de las rentas no devengadas en el servicio.
+                    <% } else { %>
+                        <span class="marco_txt">&nbsp; &nbsp;</span> Indefinido: <br><br>
+                        &bull; Sin Penalidad. <br><br>
+                        <span class="marco_txt">&nbsp;X&nbsp;</span> Plazo m&aacute;ximo <u><%= account.forcedTermValue %></u> meses: <br><br>
+                        &bull; Pagando el 20% de las rentas no devengadas en el servicio.
+                    <% } %>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 79mm;">
+                &nbsp;
+            </td>
+            <td style="width: 37mm;" class="fondo_gris black_border">
+                <p class="textos bold">
+                    Aplica Tarifa por Reconexi&oacute;n:
+                </p>
+                <p class="txt_subtitulos">
+                    SI <span class="marco_txt">&nbsp; &nbsp;</span>   NO <span class="marco_txt">&nbsp;X&nbsp;</span>
+                </p>
+            </td>
+            <td style="width: 20mm;" class="black_border">
+                <p class="textos bold">
+                    <!-- $   M.N. -->
+                    ---
+                </p>
+            </td>
+        </tr>
+        <tr class="fondo_gris">
+            <td colspan="5" class="black_border">
+                <p class="txt_titulos_tbl">
+                    En el Estado de cuenta y/o factura se podr&aacute; visualizar la fecha de corte del servicio y fecha de
+                    pago.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr class="fondo_gris">
+            <td class="black_border" colspan="2">
+                <p class="txt_titulos_tbl">
+                    M&Eacute;TODO DE PAGO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="fondo_gris black_border" style="width: 65mm;" rowspan="2">
+                <p class="textos bold">
+                    <br>
+                    <span class="marco_txt">&nbsp;
+                        <% if (client.businessData.paymentForm == "01") { %>X
+                        <% } else { %>&nbsp;
+                        <% } %>
+                        &nbsp;</span> Efectivo: <br>
+                    <span class="marco_txt">&nbsp;
+                        <% if (client.businessData.paymentForm == "04" || client.businessData.paymentForm == "28") { %>X
+                        <% } else { %>&nbsp;
+                        <% } %>
+                        &nbsp;</span> Domiciliado con Tarjeta: <br>
+                    <span class="marco_txt">&nbsp;
+                        <% if (client.businessData.paymentForm == "03") { %>X
+                        <% } else { %>&nbsp;
+                        <% } %>
+                        &nbsp;</span> Transferencia Bancaria: <br>
+                    <br>
+                </p>
+            </td>
+            <td style="width: 135mm; vertical-align: top !important;" class="black_border">
+                <div style="width: 100%; height: 7mm;" class="fondo_gris">
+                    <p class="textos bold">
+                        Datos para el m&eacute;todo de pago elegido
+                    </p>
+                </div>
+                <div>
+                    <p class="textos">
+                        Referencia de pago Banco del Baj&iacute;o: <b><%= account.paymentReferences[0] || '---' %></b><br>
+                        Referencia de pago Bancomer: <b><%= account.paymentReferences[1] || '---' %></b><br>
+                        Convenio CIE Bancomer: <b>1434632</b>
+                    </p>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr class="fondo_gris">
+            <td class="black_border" colspan="4">
+                <p class="txt_titulos_tbl">
+                    AUTORIZACI&Oacute;N PARA CARGO DE TARJETA DE CR&Eacute;DITO O D&Eacute;BITO
+                </p>
+            </td>
+        </tr>
+        <tr class="fondo_gris">
+            <td class="black_border" style="vertical-align: top !important;" colspan="4">
+                <p class="textos text-center">
+                    Por medio de la presente SI <span class="marco_txt">&nbsp; &nbsp;</span>
+                    NO <span class="marco_txt">&nbsp; &nbsp;</span> autorizo a "EL PROVEEDOR", para que cargue a mi
+                    tarjeta de cr&eacute;dito o d&eacute;bito; la cantidad por concepto de servicios que mensualmente me presta. La
+                    vigencia de los cargos ser&aacute; por <b><u>&nbsp; &nbsp; &nbsp; &nbsp;</u></b> meses. <br><br><br>
+                    ________________ <br>
+                    <b>Firma</b>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border fondo_gris" style="width: 14mm;">
+                <p class="textos bold">
+                    Banco:
+                </p>
+            </td>
+            <td class="black_border" style="width: 78mm;">
+
+            </td>
+            <td class="black_border fondo_gris" style="width: 38mm;">
+                <p class="textos bold">
+                    N&uacute;mero de Tarjeta:
+                </p>
+            </td>
+            <td class="black_border" style="width: 70mm;">
+
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr class="fondo_gris">
+            <td class="black_border" colspan="2">
+                <p class="txt_titulos_tbl">
+                    DATOS DEL EQUIPO DE TELEFON&Iacute;A M&Oacute;VIL entregado en: COMPRA - VENTA
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 96mm !important;">
+                <p class="textos">
+                    <b>Marca: </b> ---
+                </p>
+            </td>
+            <td class="black_border">
+                <p class="textos">
+                    <b>N&uacute;mero de Equipos: </b> ---
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 96mm !important;">
+                <p class="textos">
+                    <b>Modelo: </b> ---
+                </p>
+            </td>
+            <td>
+                <p class="textos">
+                    <b>Cantidad a pagar por equipo: $ <u> --- </u> total por mes</b>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 96mm !important;">
+                <p class="textos">
+                    <b>N&uacute;mero de serie: </b> ---
+                </p>
+            </td>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr class="fondo_gris">
+            <td class="black_border" colspan="3">
+                <p class="txt_titulos_tbl">
+                    SERVICIOS ADICIONALES
+                </p>
+            </td>
+        </tr>
+        <tr class="fondo_gris">
+            <td class="black_border" style="width: 9mm;">
+                <p class="txt_subtitulos">
+                    #
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="txt_subtitulos">
+                    DESCRIPCI&Oacute;N
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="txt_subtitulos">
+                    COSTO
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    1
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    Equipo telef&oacute;nico
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    Seg&uacute;n equipo
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    2
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    SIM en planes post pago
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    Sin costo
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    3
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    SIM en planes pre pago
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 99.00 M.N.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    4
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    Minuto extra
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 0.70 M.N.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    5
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    SMS Extra
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 0.70 M.N.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    6
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    MB Extra
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 0.22 M.N.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    7
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    Detalle de llamadas en Factura por mes solicitado por el cliente (formato digital)
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 34.80 M.N.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    8
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    Detalle de llamadas en Factura por mes pago recurrente (formato digital)
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 34.80 M.N.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    9
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    Env&iacute;o de SIM a domicilio.
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 100.00 M.N.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    10
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    Servicio de cambio de n&uacute;mero
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 100.00 M.N.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr class="fondo_gris">
+            <td class="black_border" colspan="3">
+                <p class="txt_titulos_tbl">
+                    CONCEPTOS FACTURABLES <br>
+                    (Ejemplo: Costo por cambio de domicilio, Costos administrativos adicionales)
+                </p>
+            </td>
+        </tr>
+        <tr class="fondo_gris">
+            <td class="black_border" style="width: 9mm;">
+                <p class="txt_subtitulos">
+                    #
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="txt_subtitulos">
+                    DESCRIPCI&Oacute;N
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="txt_subtitulos">
+                    COSTO
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    1
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    Equipo telef&oacute;nico
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    Seg&uacute;n equipo
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    2
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    SIM en planes post pago
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    Sin costo
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    3
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    SIM en planes pre pago
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 99.00 M.N.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    4
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    Minuto extra
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 0.70 M.N.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    5
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    SMS Extra
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 0.70 M.N.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    6
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    MB Extra
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 0.22 M.N.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    7
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    Detalle de llamadas en Factura por mes solicitado por el cliente (formato digital)
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 34.80 M.N.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    8
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    Detalle de llamadas en Factura por mes pago recurrente (formato digital)
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 34.80 M.N.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    9
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    Env&iacute;o de SIM a domicilio.
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 100.00 M.N.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border" style="width: 9mm;">
+                <p class="textos text-center">
+                    10
+                </p>
+            </td>
+            <td class="black_border" style="width: 156mm;">
+                <p class="textos">
+                    Servicio de cambio de n&uacute;mero
+                </p>
+            </td>
+            <td class="black_border" style="width: 35mm;">
+                <p class="textos text-right" style="margin-right: 2px;">
+                    $ 100.00 M.N.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr class="fondo_gris">
+            <td class="black_border" colspan="6">
+                <p class="txt_titulos_tbl">
+                    EL SUSCRIPTOR AUTORIZA SE LE ENV&Iacute;E POR CORREO ELECTR&Oacute;NICO:
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border fondo_gris" style="width: 15mm;">
+                <p class="textos bold">
+                    Factura
+                </p>
+            </td>
+            <td class="black_border" style="width: 32mm;">
+                <p class="textos">
+                    SI <span class="marco_txt">X</span> NO <span class="marco_txt">&nbsp;&nbsp;</span>
+                </p>
+            </td>
+            <td class="black_border fondo_gris" style="width: 46mm;">
+                <p class="textos bold">
+                    Carta de Derechos M&iacute;nimos
+                </p>
+            </td>
+            <td class="black_border" style="width: 28mm;">
+                <p class="textos">
+                    SI <span class="marco_txt">X</span> NO <span class="marco_txt">&nbsp;&nbsp;</span>
+                </p>
+            </td>
+            <td class="black_border fondo_gris" style="width: 36mm;">
+                <p class="textos bold">
+                    Contrato de Adhesi&oacute;n
+                </p>
+            </td>
+            <td class="black_border" style="width: 43mm;">
+                <p class="textos">
+                    SI <span class="marco_txt">X</span> NO <span class="marco_txt">&nbsp;&nbsp;</span>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr>
+            <td class="black_border fondo_gris" style="width: 14mm;">
+                <p class="textos bold">
+                    CORREO ELECTR&Oacute;NICO AUTORIZADO:
+                </p>
+            </td>
+            <td class="black_border" style="width: 78mm;">
+                <p class="textos">
+                    <% account.contacts.forEach(function(contact){ %>
+                        <% if (contact.contactMeanName == "email") { %>
+                            <%= contact.value %>
+                        <% } %>
+                    <% }); %>
+                </p>
+            </td>
+            <td class="black_border fondo_gris" style="width: 38mm;">
+                <p class="textos bold">
+                    FIRMA SUSCRIPTOR:
+                </p>
+            </td>
+            <td class="black_border" style="width: 70mm !important;">
+                <div style="width: 70mm !important; height: 25mm; display: flex; justify-content: center; align-items: center;">
+                    <% if (client.evidence.signature) { %>
+                        <img src="<%= client.evidence.signature %>" height="200">
+                    <% } else { %>&nbsp
+                        <img src="<%= publicPath %>/images/odx/empty_signature.png" height="200">
+                    <% } %>
+                    <br>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr class="fondo_gris">
+            <td class="black_border">
+                <p class="txt_titulos_tbl">
+                    AUTORIZACI&Oacute;N PARA USO DE INFORMACI&Oacute;N DEL SUSCRIPTOR
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border">
+                <p class="textos">
+                    1. El suscriptor SI <span class="marco_txt">&nbsp;&nbsp;</span> NO <span class="marco_txt">&nbsp;&nbsp;</span>
+                    autoriza que su informaci&oacute;n sea cedida o transmitida por el proveedor a terceros con fines
+                    mercadot&eacute;cnicos o publicitarios. <b>FIRMA</b> __________ <br><br>
+                    2. El suscriptor acepta SI <span class="marco_txt">&nbsp;&nbsp;</span> NO <span class="marco_txt">&nbsp;&nbsp;</span>
+                    recibir llamadas del proveedor de promociones de servicios o paquetes. <b>FIRMA</b> __________
+                </p>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr class="fondo_gris">
+            <td class="black_border">
+                <p class="txt_titulos_tbl">
+                    AUTORIZACI&Oacute;N PARA CONSULTA BUR&Oacute; DE CR&Eacute;DITO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border">
+                <p class="textos">
+                    Por este conducto autorizo expresamente a Domain, S. DE R.L. DE C.V., para que por conducto de sus
+                    funcionarios facultados lleve a cabo Investigaciones, sobre mi comportamiento crediticio o el de la
+                    Empresa que represento en Trans Union de M&eacute;xico, S. A. SIC y/o Dun & Bradstreet, S.A. S.I.C. <br>
+                    As&iacute; mismo, declaro que conozco la naturaleza y alcance de la informaci&oacute;n que se solicitar&aacute;, del uso
+                    que Domain, S. DE R.L. DE C.V., har&aacute; de tal informaci&oacute;n y de que &eacute;sta podr&aacute; realizar consultas
+                    peri&oacute;dicas sobre mi historial o el de la empresa que represento, consintiendo que esta autorizaci&oacute;n
+                    se encuentre vigente por un per&iacute;odo de 3 a&ntilde;os contados a partir de su expedici&oacute;n y en todo caso
+                    durante el tiempo que se mantenga la relaci&oacute;n jur&iacute;dica. <br>
+                    En caso de que la solicitante sea una Persona Moral, declaro bajo protesta de decir verdad ser
+                    Representante Legal de la empresa mencionada en esta autorizaci&oacute;n; manifestando que a la fecha de
+                    firma de la presente autorizaci&oacute;n los poderes no me han sido revocados, limitados, ni modificados en
+                    forma alguna.
+                </p><br>
+                <p class="textos">
+                    Autorizaci&oacute;n para: <br>
+                    Persona F&iacute;sica (PF) ______ Persona F&iacute;sica con Actividad Empresarial (PFAE) ______ Persona Moral (PM) ______
+                    <br>
+                    Nombre del solicitante (Persona F&iacute;sica o Raz&oacute;n Social de la Persona Moral): <br>
+                    ____________________________________________________________________________________________________
+                    <br>
+                    Para el caso de Persona Moral, nombre del Representante Legal: <br>
+                    ____________________________________________________________________________________________________
+                    <br>
+                    RFC: _________________________________________________ <br>
+                    Domicilio: __________________________________________ Colonia: __________________________________________
+                    <br>
+                    Municipio: _____________________________ Estado: _____________________________ C&oacute;digo Pstal: ____________
+                    <br>
+                    Tel&eacute;fono(s): __________________________________________________________ <br>
+                    Fecha en la que se firma al autorizaci&oacute;n: _____________________________ <br>
+                    Estoy de acuerdo y acepto que este documento quede bajo propiedad de Domain, S. DE R.L. DE C.V. y/o Sociedad de
+                    Informaci&oacute;n Crediticia consultada para efectos de control y cumplimiento del art&iacute;culo 28 de la Ley para Regular a Las
+                    Sociedades de Informaci&oacute;n Crediticia; mismo que se&ntilde;ala que las Sociedades s&oacute;lo podr&aacute;n proporcionar informaci&oacute;n a un
+                    Usuario, cuando &eacute;ste cuente con la autorizaci&oacute;n expresa del Cliente mediante su firma aut&oacute;grafa.
+                    <br><br>
+                    Estoy consciente y acepto que este documento quede bajo propiedad de Domain, S. DE R.L. DE C.V. y/o Sociedad de Informaci&oacute;n
+                    Crediticia consultada para efectos de control y cumplimiento del art&iacute;culo 28 de la Ley para Regular a Las Sociedades de Informaci&oacute;n
+                    Crediticia.
+                    <br><br>
+                    Nombre y Firma (aut&oacute;grafa) del Cliente o Representante Legal __________________________________ <br>
+                    <br>
+                    Para uso exclusivo de Domain, S. DE R.L. DE C.V. <br>
+                    Fecha de consulta BC: _____________________________________ <br>
+                    Folio de consulta BC: _____________________________________
+                    <br><br>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr class="fondo_gris">
+            <td class="black_border" colspan="3">
+                <p class="txt_titulos_tbl">
+                    MEDIOS DE CONTACTO DEL PROVEEDOR PARA QUEJAS, ACLARACIONES, CONSULTAS Y CANCELACIONES
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border fondo_gris" style="width: 11mm;">
+                <p class="textos bold">
+                    TEL&Eacute;FONO:
+                </p>
+            </td>
+            <td class="black_border" style="width: 74mm;">
+                <p class="textos text-center">
+                    442 628 0000
+                </p>
+            </td>
+            <td style="width: 115mm;">
+                <p class="textos">
+                    Disponible las 24 horas del d&iacute;a los 7 d&iacute;as de la semana
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr>
+            <td class="black_border fondo_gris" style="width: 33mm;">
+                <p class="textos bold">
+                    CORREO ELECTR&Oacute;NICO:
+                </p>
+            </td>
+            <td class="black_border" style="width: 52mm;">
+                <p class="textos text-center">
+                    clientes@domain.com
+                </p>
+            </td>
+            <td style="width: 115mm;">
+                <p class="textos">
+                    Disponible las 24 horas del d&iacute;a los 7 d&iacute;as de la semana
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr>
+            <td class="black_border fondo_gris" style="width: 61mm;">
+                <p class="textos bold">
+                    CENTROS DE ATENCI&Oacute;N A CLIENTES:
+                </p>
+            </td>
+            <td style="width: 139mm;">
+                <p class="textos">
+                    Consultar horarios disponibles, d&iacute;as disponibles y centros de atenci&oacute;n a clientes disponibles en
+                    la p&aacute;gina de internet www.domain.com
+                </p>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr class="fondo_gris">
+            <td class="black_border" colspan="3">
+                <p class="txt_titulos_tbl">
+                    LA PRESENTE CAR&Aacute;TULA Y EL CONTRATO DE ADHESI&Oacute;N SE ENCUENTRAN DISPONIBLES EN:
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="black_border fondo_gris" style="width: 45mm;">
+                <p class="textos bold">
+                    1. La p&aacute;gina del proveedor
+                </p>
+            </td>
+            <td class="black_border" style="width: 155mm;">
+                <p class="textos">
+                    www.domain.com
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr>
+            <td class="black_border fondo_gris" style="width: 55mm;">
+                <p class="textos bold">
+                    2. Bur&oacute; comercial de PROFECO
+                </p>
+            </td>
+            <td class="black_border" style="width: 145mm;">
+                <p class="textos">
+                    https://burocomercial.profeco.gob.mx/ca_spt/Domain, S. de R.L. de C.V.!!Domain Telecomunicaciones 654-2019.pdf
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr>
+            <td class="black_border fondo_gris" style="width: 85mm;">
+                <p class="textos bold">
+                    3. F&iacute;sicamente en los centros de atenci&oacute;n del proveedor
+                </p>
+            </td>
+            <td class="black_border" style="width: 115mm;">
+                <p class="textos">
+                    Consultar centros de atenci&oacute;n a clientes en www.domain.com
+                </p>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table cellpadding="0" cellspacing="0" class="black_border">
+        <tr>
+            <td class="black_border">
+                <p class="textos bold text-center">
+                    LA PRESENTE CAR&Aacute;TULA SE RIGE CONFORME A LAS CL&Aacute;USULAS DEL CONTRATO DE ADHESI&Oacute;N REGISTRADO EN
+                    PROFECO EL 11/10/2019, CON N&Uacute;MERO: 654-2019 DISPONIBLE EN EL SIGUIENTE C&Oacute;DIGO: <br>
+                    <img src="<%= publicPath %>/images/odx/qr_code_sc.png"><br>
+                    LAS FIRMAS INSERTADAS ABAJO SON LA ACEPTACI&Oacute;N DE LA PRESENTE CAR&Aacute;TULA Y CLAUSULADO DEL CONTRATO
+                    CON N&Uacute;MERO <u> <%= client.folio %> </u> <br><br>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                <p class="textos text-center">
+                    Este contrato se firm&oacute; por duplicado en la Ciudad de <u> Quer&eacute;taro </u>, a
+                    <u> <%= document.date.day %> </u> de <u> <%= document.date.month %> </u> del <u> <%= document.date.year %> </u>.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <br><br><br><br>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                <p class="txt_titulos_tbl">
+                    <img src="<%= publicPath %>/images/odx/empty_signature.png" height="100"><br>
+                    _______________________________ <br><br>
+                    PROVEEDOR
+                </p>
+            </td>
+            <td>
+                <p class="txt_titulos_tbl">
+                    <% if (client.evidence.signature) { %>
+                        <img src="<%= client.evidence.signature %>" height="100">
+                    <% } else { %>&nbsp
+                        <img src="<%= publicPath %>/images/odx/empty_signature.png" height="100">
+                    <% } %>
+                    <br>
+                    _______________________________ <br><br>
+                    SUSCRIPTOR
+                </p>
+            </td>
+        </tr>
+    </table>
+    <br>
+</body>
+
+</html>

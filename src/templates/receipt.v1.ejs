@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Recibo</title>
+
+    <!-- file:\\\C:\\home\\app\\files\\image.jpg -->
+    <link rel="stylesheet" href="<%= publicPath %>/styles/receipts/html5reset-1.6.1.css">
+    <!-- <link rel="stylesheet" href="<%= publicPath %>/styles/receipts/type_b_receipt.css"> -->
+    <link rel="stylesheet" href="<%= publicPath %>/styles/receipts/type_b_receipt.css">
+</head>
+<body>
+<!-- <page size="Letter"> -->
+    <table id="receipt">
+        <tr>
+            <td id="logo_header">
+                <img src="<%= publicPath %>/images/receipts/logo.png" alt="Domain">
+            </td>
+            <td id="info_ientc_invoice">
+                <table id="table_info_invoice" class="font7">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td class="red_bg rounded-l white text-right bold padded-right">
+                            Saldo al Corte:
+                        </td>
+                        <td class="text-left rounded-r white red_bg bold"><%= balance.total %></td>
+                    </tr>
+                    <tr>
+                        <td class="bold text-right">Domain S. de R.L. de C.V.</td>
+                        <td class="bold text-right padded-right">Fecha L&iacute;mite de Pago:</td>
+                        <td class="bold"><%= receipt.dueDate %></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Boulevard Bernardo Quintana</td>
+                        <td class="text-right padded-right">Mes de Emisi&oacute;n:</td>
+                        <td class="text-left"><%= receipt.month %></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">No. 562 Int. 7</td>
+                        <td class="text-right padded-right">N&uacute;mero de Cuenta:</td>
+                        <td class="text-left"><%= account.accountNumber %></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Col. Arboledas C.P. 76140</td>
+                        <td class="text-right padded-right">No. de Recibo:</td>
+                        <td class="text-left"><%= receipt.folio %></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">QRO QRO; M&eacute;xico</td>
+                        <td class="text-right padded-right">N&uacute;mero de Tel&eacute;fono:</td>
+                        <td class="text-left"><%= account.phone %></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right bold">RFC IEN110119SC9</td>
+                        <td class="text-right padded-right"></td>
+                        <td class="text-left"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="v-align-top">
+                <table>
+                    <tr>
+                        <td class="bold font7">DATOS DEL CLIENTE</td>
+                    </tr>
+                    <tr>
+                        <td class="font7"><%= client.name %></td>
+                    </tr>
+                    <tr>
+                        <td class="font7"><%= client.address1 %></td>
+                    </tr>
+                    <tr>
+                        <td class="font7"><%= client.address2 %></td>
+                    </tr>
+                    <tr>
+                        <td class="font7"><%= client.rfc %></td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td class="text-right bold font5">
+                            P&aacute;gina <%= document.page %> de <%= document.totalPages %>
+                        </td>
+                    </tr>
+                    <!-- <tr class="font7">
+                        <td class="text-right">R&eacute;gimen Fiscal:</td>
+                        <td colspan="2" class="text-right">R&eacute;gimen General de Ley Personas Morales</td>
+                    </tr> -->
+                    <tr class="font7">
+                        <td class="text-right">Lugar de Expedici&oacute;n:</td>
+                        <td colspan="2" class="text-right">Quer&eacute;taro</td>
+                    </tr>
+                    <tr class="font7">
+                        <td class="text-right">Fecha de Expedici&oacute;n:</td>
+                        <td colspan="2" class="text-right"><%= receipt.date %></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td class="black_bg rounded-l rounded-r white text-center">
+                    <span class="bold font8">CONOCE NUESTRAS PROMOCIONES</span><br>
+                    <span class="font7">Ingresa ya a tu portal de cliente https://clientes.domain.com/</span>
+            </td>
+        </tr>
+        <tr>
+            <td id="promo-container">
+                <img src="<%= publicPath %>/images/receipts/smart_solutions.jpg"
+                    alt="smart solutions" width="314px">
+            </td>
+            <td id="sumary-container">
+                <table>
+                    <tr class="rounded-l rounded-r black_bg red bold">
+                        <td class="text-left padded font8 padded-left" colspan="3">Cargos del Mes</td>
+                    </tr>
+                    <% receipt.concepts.forEach(function(concept){ %>
+                        <tr class="text-left font7">
+                            <td class="text-left padded-left" colspan="2"><%= concept.productName %></td>
+                            <td class="text-right" colspan="1"><%= concept.total %></td>
+                        </tr>
+                    <% }); %>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="bold text-right font8" colspan="2">Subtotal</td>
+                        <td class="text-right font7" colspan="1"><%= receipt.subTotal %></td>
+                    </tr>
+                    <tr>
+                        <td class="bold text-right font8" colspan="2">Descuentos</td>
+                        <td class="text-right font7" colspan="1">-<%= receipt.discount %></td>
+                    </tr>
+                    <tr>
+                        <td class="bold text-right font8" colspan="2">IVA 16 %</td>
+                        <td class="text-right font7" colspan="1"><%= receipt.taxes %></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="bold text-right font8" colspan="2">Cargos del Mes</td>
+                        <td class="text-right font7" colspan="1"><%= receipt.total %></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right font5" colspan="3">[<%= receipt.totalInText %>]</td>
+                    </tr>
+                </table>
+                <table border="1" class="table table-bordered" style="border-color: #ff0000;">
+                    <tr class="rounded-l rounded-r black_bg red bold font8">
+                        <td class="text-left padded padded-left" colspan="2">Estado de cuenta</td>
+                        <td style="color: white;"></td>
+                    </tr>
+                    <% balance.lastMovements.forEach(function(movement){ %>
+                        <tr class="text-left font7">
+                            <td class="text-left padded-left">
+                                <%= movement.type %>
+                            </td>
+                            <td class="font7 text-center">
+                                <%= movement.date %>
+                            </td>
+                            <td class="text-right">
+                                <% if(movement.type === 'Recibo') { %>
+                                    <strong style="color: red"><%= movement.total %></strong>
+                                <% } else { %>
+                                    <%= movement.total %>
+                                <% } %>
+                            </td>
+                        </tr>
+                    <% }); %>
+                    <tr>
+                        <td class="bold text-right font8">
+                            Saldo al Corte
+                        </td>
+                        <td class="text-right">
+                            <span class="pull-right font8"><%= currentDate %></span>
+                        </td>
+                        <td class="text-right font7"><%= balance.total %></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <!-- <td class="text-right font5">[{{ total_letter }}]</td> -->
+                        <td class="text-right font5"></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td class="black_bg rounded-l rounded-r white text-center" id="aumenta">
+                                <span class="bold bigger">AUMENTA TU VELOCIDAD</span><br>
+                                <span id="aumenta-tu-velocidad">
+                                    https://domain.com/ <img src="<%= publicPath %>/images/receipts/aumenta.png" width="20px" alt="">
+                                </span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr class="font9">
+            <td id="client-support" class="padding-bottom">
+                <span class="bold">DUDAS Y ACLARACIONES RESPECTO A PAGOS</span><br>
+                <!-- <span><img style="width: 15px; height: 13px; padding-top: 5px;" src="{{ base_url }}{% static "images/receipts/right_arrow.jpg" %}" alt="">&nbsp;A trav&eacute;s de chat domain.com</span><br> -->
+                <span class="bold"><img style="width: 15px; height: 13px; padding-top: 5px;" src="<%= publicPath %>/images/receipts/right_arrow.jpg" alt="">&nbsp;Correo electr&oacute;nico</span><br>
+                <span style="margin-left: 20px;">admin@domain.com</span><br>
+                <span class="bold"><img style="width: 15px; height: 13px; padding-top: 5px;" src="<%= publicPath %>/images/receipts/right_arrow.jpg" alt="">&nbsp;01 800 6000 111</span><br>
+            </td>
+            <td class="text-right v-align-bottom">
+                <!-- <span class="font4 arrow_container">
+                    COMPROBANTE DEL CLIENTE <img src="<%= publicPath %>/images/receipts/down_arrow.jpg" alt="arrow_top">
+                </span> -->
+            </td>
+        </tr>
+    </table>
+    <table class="border_top_red">
+        <tr>
+            <td class="padding-top" style="width: 22%;">
+                <span class="bold font7">
+                    DATOS DEL CLIENTE
+                </span><br>
+                <span class="bold font7">
+                    <%= client.name %>
+                </span><br>
+                <span class="font7"><%= client.address1 %></span><br>
+                <span class="font7"><%= client.address2 %></span><br>
+                <span class="font7"><%= client.rfc %></span><br>
+                <br>
+                <span class="font7">Beneficiario: Domain S. de R.L. de C.V.</span><br>
+                <span class="font7">Saldo al Corte: <%= balance.total %></span><br>
+                <span class="font7">Fecha de pago: <%= receipt.dueDate %></span>
+            </td>
+            <td class="padding-top">
+                <table>
+                    <tr class="text-center">
+                        <td class="black_bg bold black_border" style="width: 18%;"></td>
+                        <td class="black_bg bold black_border" style="width: 18%;"></td>
+                        <td class="black_bg bold black_border" style="width: 28%;">
+                            <span class="red padded font6">REFERENCIAS DE PAGO</span>
+                        </td>
+                        <td class="black_bg bold black_border" style="width: 18%;"></td>
+                        <td class="black_bg bold black_border" style="width: 18%;"></td>
+                    </tr>
+                    <tr class="black_bg bold black_border text-center">
+                        <td style="width: 20%;" class="white font6">BANCO</td>
+                        <td style="width: 20%;" class="white font6">CONVENIO</td>
+                        <td style="width: 20%;" class="white font6">CUENTA</td>
+                        <td style="width: 20%;" class="white font6">CLABE</td>
+                        <td style="width: 20%;" class="white font6">REFERENCIA</td>
+                    </tr>
+                    <tr class="black_border text-center">
+                        <td class="bold font6" id="reference-footer">
+                            BanBaj&iacute;o
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            ------
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            6504898
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            030680650489801013
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            <%= account.paymentReferences[0] || '------' %>
+                        </td>
+                    </tr>
+                    <tr class="black_border text-center">
+                        <td class="bold font6" id="reference-footer">
+                            Bancomer
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            1434632
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            ------
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            ------
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            <%= account.paymentReferences[1] || '------' %>
+                        </td>
+                    </tr>
+                    <tr class="font5">
+                        <td class="text-right"></td>
+                        <td class="text-right">** USE &Eacute;STAS</td>
+                        <td class="text-center">REFERENCIA PARA EFECTUAR</td>
+                        <td class="text-left">SU PAGO **</td>
+                        <td class="text-left"></td>
+                    </tr>
+                </table>
+            </td>
+            <% if(barcode != '') { %>
+                <td class="padding-top text-center" style="width: 30%;">
+                    Paga tu recibo en oxxo: <br>
+                    <img src="<%= publicPath %>/images/receipts/logo_oxxo.png" alt="Paga en oxxo" width="45%"><br>
+                    <!-- TODO: Aquí va el código de barras -->
+                    <!-- TODO: Agregar solamente si se pudo generar bien. -->
+                    <img height="50%" width="80%" src="<%= barcode %>" alt="C&oacute;digo de barras">
+                </td>
+            <% } %>
+        </tr>
+    </table>
+    <div>
+        <div style="width: 22%; padding-left: 15px; display: inline-block; float: left;" class="text-center padding-top">
+            <img src="<%= publicPath %>/images/receipts/folio.svg" alt="barcode">
+        </div>
+        <div style="width: 55%; margin-right: 45px !important; display: inline-block; float: right;" class="text-center padding-top" id="banner-container">
+            <img src="<%= publicPath %>/images/receipts/banner.png" alt="Banner" >
+        </div>
+    </div>
+    <div class="border_top_red border_bottom_red" style="display: block; clear: both">
+        <div class="text-center font6" style="width: 100%">
+            Estimado Cajero: Sea tan amable de recibir pago a&uacute;n despu&eacute;s de la fecha l&iacute;mite y por cualquier cantidad, as&iacute; como indicar el n&uacute;mero de referencia de acuerdo al banco seleccionado en la descripci&oacute;n del dep&oacute;sito.
+        </div>
+    </div>
+    <div>
+        <div class="text-left" id="footer-cont">
+            <img style="margin-top: 15px !important;" src="<%= publicPath %>/images/receipts/recycle.png" alt="recicle">
+            <span class="bold font6">
+                Cuidemos el medio ambiente. Por favor no imprima este documento si no es necesario.
+            </span>
+        </div>
+    </div>
+<!-- </page> -->
+</body>
+</html>

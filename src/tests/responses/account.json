@@ -1,0 +1,64 @@
+{
+    "_id": "5c9a50bde92ba67e78bdce45",
+    "status": "54759eb3c090d83494e2d804",
+    "type": "54759eb3c090d83494e2d804",
+    "productId": "54759eb3c090d83494e2d804",
+    "productName": "Internet SIN Cables 150 GB / 20 Mbps",
+    "phone": "4423228864",
+    "equipment": "54759eb3c090d83494e2d804",
+    "isItLoan": false,
+    "comments": [
+        {
+            "_id": "5c9a50bde92ba67e78bdce47",
+            "comment": "Comentario #1.",
+            "createdAt": "2019-03-26T16:18:05.718Z",
+            "updatedAt": "2019-03-26T16:18:05.718Z"
+        },
+        {
+            "_id": "5c9a50bde92ba67e78bdce46",
+            "comment": "Comentario #2.",
+            "createdAt": "2019-03-26T16:18:05.718Z",
+            "updatedAt": "2019-03-26T16:18:05.718Z"
+        }
+    ],
+    "clientId": "5c880418c8f69653f812e119",
+    "createdAt": "2019-03-26T16:18:05.718Z",
+    "updatedAt": "2019-03-26T16:18:05.718Z",
+    "__v": 0,
+    "address": {
+        "loc": {
+            "coordinates": [
+                -100.388764,
+                20.616783
+            ],
+            "type": "Point"
+        },
+        "_id": "5c9a50bd534d2558349a4a0f",
+        "street": "Nogal",
+        "outdoorNumber": "121",
+        "interiorNumber": "3er. Piso",
+        "settlement": "Arboledas",
+        "location": "",
+        "reference": "",
+        "latitude": 20.616783,
+        "longitude": -100.388764,
+        "zipCode": 76140,
+        "extraDetails": "5c891f8d29e5e225f4d59bd5",
+        "parentType": "service",
+        "parentId": "5c9a50bde92ba67e78bdce45",
+        "createdAt": "2019-03-26T16:18:05.790Z",
+        "updatedAt": "2019-03-26T16:18:05.790Z",
+        "__v": 0
+    },
+    "contacts": [
+        {
+            "_id": "5c9a50bd60e80e0678038691",
+            "parentType": "service",
+            "parentId": "5c9a50bde92ba67e78bdce45",
+            "contactMeans": [],
+            "createdAt": "2019-03-26T16:18:05.951Z",
+            "updatedAt": "2019-03-26T16:18:05.951Z",
+            "__v": 0
+        }
+    ]
+}

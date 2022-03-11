@@ -1,0 +1,9 @@
+{
+	"name": "Soporte",
+	"email": "support@domain.com",
+	"manager": "5ca3e350dbb4cf24d4276322",
+	"modulesValues": [
+		"clients",
+		"services"
+	]
+}

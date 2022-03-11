@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Estado de cuenta</title>
+
+    <link rel="stylesheet" href="<%= publicPath %>/styles/receipts/html5reset-1.6.1.css">
+    <link rel="stylesheet" href="<%= publicPath %>/styles/receipts/type_b_receipt.css">
+</head>
+<body>
+<table id="receipt">
+    <tr>
+        <td style="border-right: solid 1px grey; width: 5.7cm;">
+            <img src="<%= publicPath %>/images/receipts/logo_hd.png" alt="Domain" style="width: 5.7cm;">
+        </td>
+        <td style="width: 9.6cm;">
+            <div style="margin-left: 0.3cm; font-size: 10pt;">
+                <b>Domain S. de R.L. de C.V.</b> <br>
+                Boulevard Bernardo Quintana <br>
+                No. 562 Int. 7 <BR>
+                Col. Arboledas, C.P. 76140 <br>
+                Quer&eacute;taro, Qro. M&eacute;xico <br>
+                <b>RFC: IEN110119SC9</b>
+            </div>
+        </td>
+        <td>
+            <div style="background-color: red; color: white; width: 6cm; height: 0.45cm; font-size: 12pt; text-align: center;">
+                <b><%= account.accountNumber %></b>
+            </div>
+            <br>
+            <div style="font-size: 10pt;">
+                <%= client.businessData.businessName %> <br>
+                <%= client.businessData.rfc %>
+            </div>
+            <br>
+            <div style="font-size: 10pt;">
+                Saldo al <%= currentDate %>
+                <b>
+                    <span style="color: red;"><%= balance.total %></span>
+                </b>
+            </div>
+        </td>
+    </tr>
+</table>
+<hr style="border: dot-dash">
+<br>
+<table border="1" style="font-size: 9pt;">
+    <tr style="color: grey;">
+        <td style="width: 2cm; border: solid 1px grey; padding: 0.1cm;">Fecha</td>
+        <td style="padding: 0.1cm; border: solid 1px grey;">Descripci&oacute;n</td>
+        <td style="width: 2cm; border: solid 1px grey; padding: 0.1cm;">Folio</td>
+        <td style="width: 2cm; border: solid 1px grey; padding: 0.1cm;">Estatus</td>
+        <td style="width: 2.5cm; border: solid 1px grey; padding: 0.1cm;">Cargos</td>
+        <td style="width: 2.5cm; border: solid 1px grey; padding: 0.1cm;">Pagos</td>
+        <td style="width: 2.5cm; border: solid 1px grey; padding: 0.1cm;">Balance</td>
+    </tr>
+    <% balance.movements.forEach(function(movement){ %>
+        <tr>
+            <td style="padding: 0.1cm; border: solid 1px grey;"><%= movement.date %></td>
+            <td style="padding: 0.1cm; border: solid 1px grey;"><%= movement.description %></td>
+            <td style="padding: 0.1cm; border: solid 1px grey;"><%= movement.folio %></td>
+            <td style="padding: 0.1cm; border: solid 1px grey;"><%= movement.status %></td>
+            <td style="padding: 0.1cm; border: solid 1px grey; text-align: right;"><b><%= movement.charge %></b></td>
+            <td style="padding: 0.1cm; border: solid 1px grey; text-align: right;"><%= movement.payment %></td>
+            <td style="padding: 0.1cm; border: solid 1px grey; text-align: right;"><b><%= movement.balance %></b></td>
+        </tr>
+    <% }); %>
+</table>
+<br>
+<div style="font-size: 7pt;">
+    <img src="<%= publicPath %>/images/receipts/recycle.png" style="float: left; width: 0.25cm;" alt=""> <b>Cuidemos el medio ambiente. Por favor no imprima este documento si no es necesario</b>
+</div>
+</body>
+</html>

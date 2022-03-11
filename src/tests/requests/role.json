@@ -1,0 +1,8 @@
+{
+	"name": "admin",
+	"create": true,
+	"read": true,
+	"update": true,
+	"delete": true,
+	"approve": true
+}

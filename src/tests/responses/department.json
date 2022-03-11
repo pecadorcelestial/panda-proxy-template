@@ -1,0 +1,15 @@
+{
+    "modulesValues": [
+        "clients",
+        "services"
+    ],
+    "_id": "5ca4d45e144fd30ef81c494d",
+    "name": "Soporte",
+    "email": "support@domain.com",
+    "manager": "5ca3e350dbb4cf24d4276322",
+    "createdAt": "2019-04-03T15:42:22.125Z",
+    "updatedAt": "2019-04-03T15:42:22.125Z",
+    "__v": 0,
+    "modules": null,
+    "id": "5ca4d45e144fd30ef81c494d"
+}

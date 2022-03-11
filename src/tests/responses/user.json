@@ -1,0 +1,50 @@
+{
+    "isActive": true,
+    "departments": [
+        "5ca4d45e144fd30ef81c494d"
+    ],
+    "_id": "5ca4d5fd144fd30ef81c494e",
+    "email": "frodriguez@domain.com",
+    "firstName": "Francisco",
+    "lastName": "Rodríguez",
+    "googleId": "110091242490360582975",
+    "permissions": [
+        {
+            "_id": "5ca4d5fd144fd30ef81c4950",
+            "role": {
+                "create": true,
+                "read": true,
+                "update": true,
+                "delete": true,
+                "approve": true,
+                "name": "admin"
+            },
+            "module": {
+                "name": "Servicios",
+                "value": "services"
+            },
+            "createdAt": "2019-04-03T15:49:17.499Z",
+            "updatedAt": "2019-04-03T15:49:17.499Z"
+        },
+        {
+            "_id": "5ca4d5fd144fd30ef81c494f",
+            "role": {
+                "create": true,
+                "read": true,
+                "update": true,
+                "delete": true,
+                "approve": true,
+                "name": "admin"
+            },
+            "module": {
+                "name": "Clientes",
+                "value": "clients"
+            },
+            "createdAt": "2019-04-03T15:49:17.499Z",
+            "updatedAt": "2019-04-03T15:49:17.499Z"
+        }
+    ],
+    "createdAt": "2019-04-03T15:49:17.500Z",
+    "updatedAt": "2019-04-03T15:49:17.500Z",
+    "__v": 0
+}

@@ -1,0 +1,19 @@
+{
+	"email": "frodriguez@domain.com",
+	"firstName": "Francisco",
+	"lastName": "Rodríguez",
+	"isActive": true,
+	"password": "R0dr1gu3z",
+	"googleId": "110091242490360582975",
+	"departments": ["5ca4d45e144fd30ef81c494d"],
+	"permissions": [
+		{
+			"role": "5ca4d41e144fd30ef81c494c",
+			"module": "5ca3e350dbb4cf24d4276322"
+		},
+		{
+			"role": "5ca4d41e144fd30ef81c494c",
+			"module": "5ca3e35fdbb4cf24d4276323"
+		}
+	]
+}

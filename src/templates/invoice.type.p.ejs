@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pago</title>
+
+    <link rel="stylesheet" href="<%= publicPath %>/styles/receipts/html5reset-1.6.1.css">
+    <link rel="stylesheet" href="<%= publicPath %>/styles/invoices/type_p_receipt.css">
+</head>
+<body>
+<div id="header">
+    <div class="all_width text-left">
+        <img src="<%= publicPath %>/images/invoices/logo.jpg" alt="Domain">
+
+        <div class="float-right txt-nota-cred">Complemento de Pago</div>
+    </div>
+    <br>
+    <span class="fiscal-info-domain font7 text-center all_width">Domain S. de R.L. de C.V. | Boulevard Bernardo Quintana No. 562 Int. 7 ,Arboledas | QRO Quer&eacute;taro, M&eacute;xico., C.P. 76140 | RFC: IEN110119SC9</span>
+    <span class="fiscal-info-domain font7 text-center all_width">TEL. +52[442]349 76 06 | TEL. 01 800 6000 111 | domain.mx</span>
+</div>
+
+<table class="receipt">
+    <tr>
+        <td id="info-cliente">
+                <span class="bold font7">Cuenta</span><br>
+                <span class="bold font7"><%= account.accountNumber %></span><br>
+                <span class="bold font7"><%= client.businessData.businessName %></span><br>
+                <span class="font7"><%= client.rfc %></span><br>
+                <span class="font7"><%= client.address1 %></span><br>
+                <span class="font7"><%= client.zipCode %></span><br>
+                <span class="font7"><%= client.address2 %></span>
+        </td>
+        <td>
+            <table>
+                <tr class="font7">
+                    <td class="text-right bold">Complemento de pago</td>
+                    <td colspan="2" class="text-left padded-left"><%= invoice.folio %></td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">Folio Fiscal</td>
+                    <td colspan="2" class="text-left padded-left"><%= invoice.uuid %></td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">Lugar de Expedici&oacute;n</td>
+                    <td colspan="2" class="text-left padded-left">76140</td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">Fecha de Emisi&oacute;n</td>
+                    <td colspan="2" class="text-left padded-left"><%= date %></td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">Fecha de Certificaci&oacute;n</td>
+                    <td colspan="2" class="text-left padded-left"><%= invoice.stampingDate %></td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">Certificado Digital</td>
+                    <td colspan="2" class="text-left padded-left"><%= invoice.csd %></td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right">&nbsp;</td>
+                    <td colspan="2" class="text-left padded-left">&nbsp;</td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">Certificado SAT</td>
+                    <td colspan="2" class="text-left padded-left"><%= invoice.satCSD %></td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">R&eacute;gimen F&iacute;scal</td>
+                    <td colspan="2" class="text-left padded-left">601 - General de Ley de Personas Morales</td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">Uso de CFDI</td>
+                    <td colspan="2" class="text-left padded-left"><%= invoice.cfdiUse %></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<div id="concept-container">
+    <table>
+        <tr>
+            <td colspan="6">
+                <table class="receipt">
+                    <thead>
+                        <tr>
+                            <th class="font6 white red_bg text-center mas_padding">UUID</th>
+                            <th class="font6 white red_bg text-center mas_padding">Folio</th>
+                            <th class="font6 white red_bg text-center mas_padding">M&eacute;todo Pago</th>
+                            <th class="font6 white red_bg text-center mas_padding">Saldo Ant.</th>
+                            <th class="font6 white red_bg text-center mas_padding">Imp. Pagado</th>
+                            <th class="font6 white red_bg text-center mas_padding">Saldo Ins.</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% invoice.concepts.forEach(function(concept){ %>
+                            <tr>
+                                <td class="font6 text-center"><%= concept.uuid %></td>
+                                <td class="font6 text-center"><%= concept.serieNfolio %></td>
+                                <td class="font6 text-center">PPD</td>
+                                <td class="font6 text-center"><%= concept.lastBalance %></td>
+                                <td class="font6 text-center"><%= concept.amount %></td>
+                                <td class="font6 text-center"><%= concept.currentBalance %></td>
+                            </tr>
+                        <% }); %>
+                        <tr>
+                            <td colspan="6">
+                                <div class="linea_separador"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tbody>
+            <tr id="concept-footer">
+                <td colspan="4">
+                    <table>
+                        <tr>
+                            <td class="font7"><span class="bold">Forma de Pago:</span></td>
+                            <td class="font7"><span><%= invoice.paymentForm %></span></td>
+                            <td class="font7"><span class="bold"></span></td>
+                            <td class="font6"><span></span></td>
+                        </tr>
+                        <tr>
+                            <!-- AQU&iacute; -->
+                            <td class="font7"><span class="bold">Cuenta de Pago:</span></td>
+                            <td class="font6"><span><%= client.businessData.issuingAccountNumber %></span></td>
+                            <td class="font7"><span class="bold">Cuenta Beneficiario:</span></td>
+                            <td class="font6"><span><%= company.accountNumber %></span></td>
+                        </tr>
+                        <tr>
+                            <td class="font7"><span class="bold">RFC Banco Emisor:</span></td>
+                            <td class="font6"><span><%= client.businessData.issuingBankRfc %></span></td>
+                            <td class="font7"><span class="bold">RFC Cuenta Beneficiario:</span></td>
+                            <td class="font6"><span><%= company.rfc %></span></td>
+                        </tr>
+                        <tr>
+                            <td class="font7"><span class="bold">Banco Emisor:</span></td>
+                            <td class="font5"><span><%= client.businessData.issuingBankName %></span></td>
+                        </tr>
+                        <tr>
+                            <td class="font7"><span class="bold">Moneda:</span></td>
+                            <td class="font7"><span><%= invoice.currency %></span></td>
+                            <td class="font7"><span class="bold"></span></td>
+                            <td class="font6"><span></span></td>
+                        </tr>
+                        <tr>
+                            <td class="font7"><span class="bold">Tipo de cambio:</span></td>
+                            <td class="font7"><span><%= invoice.exchangeRate %></span></td>
+                            <td class="font7"><span class="bold"></span></td>
+                            <td class="font6"><span></span></td>
+                        </tr>
+                    </table>
+                </td>
+                <td colspan="2"></td>
+                <td colspan="1">
+                    <table>
+                        <tr>
+                            <td class="font8"><span class="bold">&nbsp;</span></td>
+                            <!--<td class="font7 text-right">$<%= invoice.subTotal %></td>-->
+                            <td class="font8 text-right">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="font8"><span class="bold">Monto</span></td>
+                            <td class="font8 text-right"><%= invoice.total %></td>
+                        </tr>
+                        <tr>
+                            <td class="font8"><span class="bold">&nbsp;</span></td>
+                            <td class="font8 text-right">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="font8"><span class="bold">&nbsp;</span></td>
+                            <td class="font8 text-right">&nbsp;</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <div class="linea_separador"></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <span class="bold font7">Cantidad con letra:</span>
+                    <span class="candidadconletra font7"><%= invoice.totalInText %></span><br><br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center" style="padding: 0px 0px;">
+                    <img src="data:image/png;base64, <%= invoice.qrCode %>" alt="qr code"><br>
+                    <span class="font4">
+                        FIN DE COMPROBANTE FISCAL
+                    </span>
+                </td>
+                <td colspan="5" class="sin_padding">
+                    <table>
+                        <tr>
+                            <td class="sin_padding">
+                                <span class="font7 bold">SELLO DIGITAL DEL EMISOR</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="linea_separador"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font6 bold cortar_texto">
+                                <span class="cadenas_sat"><%= invoice.cfdiStamp %></span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span class="font7 bold">SELLO DIGITAL DEL SAT</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="linea_separador"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font6 bold cortar_texto">
+                                <span class="cadenas_sat"><%= invoice.satStamp %></span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span class="font7 bold">CADENA ORIGINAL DEL COMPLEMENTO DE CERTIFICACION DIGITAL DEL SAT</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="linea_separador"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font6 bold cortar_texto">
+                                <span class="cadenas_sat"><%= invoice.originalString %></span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

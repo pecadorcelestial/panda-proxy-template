@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="generator" content="LibreOffice 4.2.8.2 (Linux)">
+    <meta name="created" content="0;0">
+    <meta name="changed" content="0;0">
+    <link rel="stylesheet" href="<%= publicPath %>/styles/receipts/html5reset-1.6.1.css">
+    <link rel="stylesheet" href="<%= publicPath %>/styles/receipts/paynetFormat.css">
+    <!-- <link rel="stylesheet" href="../public/styles/receipts/html5reset-1.6.1.css">
+    <link rel="stylesheet" href="../public/styles/odx/paynetFormat.css"> -->
+
+
+</head>
+
+<body text="#000000">
+<table cellspacing="0" cellpadding="0" border="0">
+    <tr>
+        <td>
+            <img src="<%= publicPath %>/images/odx/logo.jpg" style="width: 7cm;">
+            <!-- <img src="../public/images/odx/logo.jpg" style="width: 7cm;"> -->
+        </td>
+        <td style="width: 3cm !important; color: #bc0a12; font-size: 0.3cm;">
+            Servicio a pagar
+        </td>
+        <td style="width: 5cm !important;">
+            <img src="<%= publicPath %>/images/receipts/paynetLogo.jpg">
+            <!--- <img src="../public/images/receipts/paynetLogo.jpg" alt=""> -->
+        </td>
+    </tr>
+</table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0">
+    <tr>
+        <td style="width: 0.7cm !important; vertical-align: top !important;">
+            <div style="width: 0.7cm !important; height: 1cm !important; background-color: #000000;"></div>
+        </td>
+        <td style="width: 0.5cm !important;"></td>
+        <td style="font-size: 0.4cm;">
+            <span style="color: #bc0a12; font-size: 0.5cm;">Fecha l&iacute;mite de pago</span> <br><br>
+            <%= due_date %> <br><br>
+            <!-- <img src="../public/images/receipts/barrasEjemplo.jpg" style="width: 7cm !important;" alt=""> <br> -->
+            <img src="<%= barcode %>" style="width: 7cm !important;" alt=""> <br>
+            <span style="margin-left: 0.3cm !important; font-size: 0.3cm !important;"><%= barcodeNumber %></span>
+            <br><br>
+            <span style="font-size: 0.28cm !important;">
+                    En caso de que el esc&aacute;ner no sea capaz de leer el c&oacute;digo de <br>
+                    barras, escribir la referencia tal como se muestra.
+                </span>
+        </td>
+        <td style="width: 10cm !important; background-color: #bc0a12; padding-left: 0.6cm !important;">
+            <span style="color: #ffffff; font-size: 0.45cm !important;">Total a pagar</span> <br><br>
+            <div style="color: #ffffff; font-size: 1.8cm !important;">
+                $ <%= totalToPay %><span
+                    style="vertical-align: top !important; font-size: 0.7cm !important; line-height: 1cm;">.<%= totalToPayCents %></span>
+                <span style="vertical-align: bottom !important; font-size: 0.7cm !important; line-height: 1cm;">MXN</span>
+            </div>
+            <br>
+            <span style="font-size: 0.28cm !important; color: #ffffff;">
+                    La comisi&oacute;n por recepci&oacute;n del pago var&iacute;a de acuerdo a los <br>
+                    t&eacute;rminos y condiciones que cada cadena comercial establece.
+                </span>
+        </td>
+    </tr>
+</table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0">
+    <tr>
+        <td style="width: 0.7cm !important; vertical-align: top !important;">
+            <div style="width: 0.7cm !important; height: 1cm !important; background-color: #000000;"></div>
+        </td>
+        <td style="width: 0.5cm !important;"></td>
+        <td style="width: 7cm !important; font-size: 0.35cm !important;">
+            <span style="color: #bc0a12; font-size: 0.45cm;">Detalles de la compra</span> <br><br>
+            Descripci&oacute;n <br><br>
+            Fecha y hora <br><br>
+            Correo del cliente
+        </td>
+
+        <td STYLE="font-size: 0.35cm !important;">
+            <span style="color: #bc0a12; font-size: 0.45cm;">&nbsp;</span> <br><br>
+            <%= productName %> <br><br>
+            <!-- 1 de febrero de 2020, a las 17:52 PM <br><br> -->
+            <%= date %> <br><br>
+            <%= clientMail %>
+        </td>
+    </tr>
+</table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0">
+    <tr>
+        <td style="width: 0.7cm !important; vertical-align: top !important;">
+            <div style="width: 0.7cm !important; height: 1cm !important; background-color: #000000;"></div>
+        </td>
+        <td style="width: 0.5cm !important;"></td>
+
+        <td style="width: 10.3cm !important; font-size: 0.28cm !important; vertical-align: top !important;">
+            <span style="color: #bc0a12; font-size: 0.45cm;">Como realizar el pago</span> <br><br>
+            <ol style="list-style-position: inside;">
+                <li>Acude a cualquier tienda afiliada</li>
+                <br>
+                <li>Entrega al cajero el c&oacute;digo de barras y menciona que realizar&aacute;s un pago de servicio
+                    Paynet
+                </li>
+                <br>
+                <li>
+                    Realizar el pago en efectivo por la cantidad indicada m&aacute;s la comisi&oacute;n del establecimiento.
+                </li>
+                <br>
+                <li>
+                    Conserva el ticket para cualquier aclaraci&oacute;n
+                </li>
+            </ol>
+            <br>
+            Si tienes dudas comun&iacute;cate a Domain al tel&eacute;fono 442 628 0000 Op. 2 o al correo admin@domain.com
+        </td>
+
+        <td STYLE="font-size: 0.28cm !important; vertical-align: top !important;">
+            <span style="color: #bc0a12; font-size: 0.45cm;">Instrucciones para el cajero</span> <br><br>
+            <ol style="list-style-position: inside;">
+                <li>Ingresar al men&uacute; de Pago de Servicios</li>
+                <br>
+                <li>
+                    Seleccionar Paynet
+                </li>
+                <br>
+                <li>
+                    Escanear el c&oacute;digo de barras o ingresar el n&uacute;m. de referencia.
+                </li>
+                <br>
+                <li>
+                    Ingresar la cantidad total a pagar.
+                </li>
+                <br>
+                <li>
+                    Cobrar al cliente el monto total m&aacute;s la comisi&oacute;n
+                </li>
+                <br>
+                <li>
+                    Confirmar la transacci&oacute;n y entregar el ticket al cliente.
+                </li>
+            </ol>
+            <br>
+            Para cualquier duda sobre como cobrar, por favor llamar al tel&eacute;fono (55) 5022 0404 en un horario de
+            8am a 9pm de lunes a domingo
+        </td>
+    </tr>
+</table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0">
+    <tr>
+        <td style="width: 100% !important; text-align: center;">
+            <img src="<%= publicPath %>/images/receipts/puntos_pago_paynet.jpg" style="width: 100% !important;" alt="">
+        </td>
+    </tr>
+</table>
+<table cellspacing="0" cellpadding="0" border="0">
+    <tr>
+        <td style="width: 100% !important; text-align: center; background-color: #bc0a12; color: #ffffff; font-size: 0.38cm !important;">
+            <br>
+            Bernardo Quintana #562 3er Piso, Col. Arboledas, Quer&eacute;taro; Qro. <br>
+            clientes@domain.com <b>442 628 0000</b> www.domain.com
+            <br><br>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 100% !important; text-align: center; background-color: #000000; color: #ffffff; font-size: 0.28cm !important;">
+            <br>
+            &copy; Domain, S. de R.L. de C.V. <br>
+            Domain Telecomunicaciones - Bernardo Quintana 562, Querétaro, MX <br><br>
+            AVISO DE PRIVACIDAD <br>
+            Domain, S. de R.L. de C.V. cumple con la privacidad de sus datos seg&uacute;n ordena la Ley Federal de Protecci&oacute;n de Datos
+            <br>
+            Personales en Posesi&oacute;n de Particulares de fecha de Publicaci&oacute;n en el Diario Oficial de la Federaci&oacute;n 5 de julio de 2010.
+            <br>
+            Consulte nuestro aviso de privacidad en: domain.com/static/pdfs/aviso_privacidad_ientc.pdf
+            <br><br>
+        </td>
+    </tr>
+</table>
+</body>
+
+</html>

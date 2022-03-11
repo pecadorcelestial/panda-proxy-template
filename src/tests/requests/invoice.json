@@ -1,0 +1,23 @@
+{
+	"serie": "A",
+	"paymentForm": "03",
+	"subTotal": 86.21,
+	"currency": "MXN",
+	"exchangeRate": "1",
+	"total": 100,
+	"compType": "I",
+	"paymentMethod": "PUE",
+	"receptorRFC": "XAXX010101000",
+	"receptorName": "Juanito y Asociados S.A de C.V",
+	"cfdiUse": "G03",
+	"concepts": [
+		{
+			"description": "Producto",
+			"cveProductService": "81161700",
+			"unitValue": 86.21,
+			"quantity": 1,
+			"discount": 6,
+			"idNumber": "ABCABC"
+		}
+	]
+}

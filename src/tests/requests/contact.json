@@ -1,0 +1,27 @@
+{
+    "_id": "5c9ba7fd867ae283bc2a6ef2",
+    "name": "Francisco Rodríguez",
+    "contactMeans": [
+        {
+            "notify": true,
+            "_id": "5c9ba7fd867ae283bc2a6ef4",
+            "contactMean": "5c9ba06660e80e0678038695",
+            "value": "frodriguez@domain.com",
+            "createdAt": "2019-03-27T16:42:37.484Z",
+            "updatedAt": "2019-03-27T16:42:37.484Z"
+        },
+        {
+            "notify": false,
+            "_id": "5c9ba7fd867ae283bc2a6ef3",
+            "contactMean": "5c9ba06660e80e0678038696",
+            "value": "4423228864",
+            "createdAt": "2019-03-27T16:42:37.484Z",
+            "updatedAt": "2019-03-27T16:42:37.484Z"
+        }
+    ],
+    "parentType": "client",
+    "parentId": "5c9ba7fd12b00e7664f7e49b",
+    "createdAt": "2019-03-27T16:42:37.484Z",
+    "updatedAt": "2019-03-27T16:42:37.484Z",
+    "__v": 0
+}

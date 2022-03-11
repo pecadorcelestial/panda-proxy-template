@@ -1,0 +1,18 @@
+[
+    {
+        "_id": "5ca3e350dbb4cf24d4276322",
+        "name": "Servicios",
+        "value": "services",
+        "createdAt": "2019-04-02T22:33:52.325Z",
+        "updatedAt": "2019-04-02T22:33:52.325Z",
+        "__v": 0
+    },
+    {
+        "_id": "5ca3e35fdbb4cf24d4276323",
+        "name": "Clientes",
+        "value": "clients",
+        "createdAt": "2019-04-02T22:34:07.559Z",
+        "updatedAt": "2019-04-02T22:34:07.559Z",
+        "__v": 0
+    }
+]

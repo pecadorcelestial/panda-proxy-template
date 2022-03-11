@@ -1,0 +1,14 @@
+[
+    {
+        "create": true,
+        "read": true,
+        "update": true,
+        "delete": true,
+        "approve": true,
+        "_id": "5ca4d41e144fd30ef81c494c",
+        "name": "admin",
+        "createdAt": "2019-04-03T15:41:18.526Z",
+        "updatedAt": "2019-04-03T15:41:18.526Z",
+        "__v": 0
+    }
+]

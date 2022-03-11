@@ -1,0 +1,44 @@
+{
+	"status": "54759eb3c090d83494e2d804",
+	"type": "54759eb3c090d83494e2d804",
+	"productId": "54759eb3c090d83494e2d804",
+	"productName": "Internet SIN Cables 150 GB / 20 Mbps",
+	"phone": "4423228864",
+	"equipment": "54759eb3c090d83494e2d804",
+	"isItLoan": false,
+	"comments": [
+		{
+			"comment": "Comentario #1."
+		},
+		{
+			"comment": "Comentario #2."
+		}
+	],
+	"clientId": "5c880418c8f69653f812e119",
+	"address": {
+		"street": "Nogal",
+		"outdoorNumber": "121",
+		"interiorNumber": "3er. Piso",
+		"settlement": "Arboledas",
+		"location": "",
+		"reference": "",
+		"latitude": 20.616783,
+		"longitude": -100.388764,
+		"zipCode": 76140,
+		"extraDetails": "5c891f8d29e5e225f4d59bd5"
+	},
+	"contact": {
+		"name": "Francisco Rodríguez",
+		"contactMeans": [
+			{
+				"contactMean": "5c9131052afc665f2c3595f3",
+				"value": "frodriguez@domain.com"
+			},
+			{
+				"contactMean": "5c9131052afc665f2c3595f4",
+				"value": "4423228864",
+				"notify": false
+			}
+		]
+	}
+}

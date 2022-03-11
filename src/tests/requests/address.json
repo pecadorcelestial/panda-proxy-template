@@ -1,0 +1,14 @@
+{ 
+	"street": "Nogal",
+	"outdoorNumber": "121",
+	"interiorNumber": "3er. Piso",
+	"settlement": "Arboledas",
+	"location": "",
+	"reference": "",
+	"latitude": 20.616783,
+	"longitude": -100.388764,
+	"zipCode": 76140,
+	"zipCodeId": "54759eb3c090d83494e2d804",
+	"parentType": "client",
+	"parentId": "5c87e0f7b194e80b1c5b1c71"
+}

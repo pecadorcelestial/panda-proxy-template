@@ -1,0 +1,23 @@
+{
+	"apps" : [{
+		"name": "%API_NAME%.%ENV%",
+		"max_memory_restart" : "2G",
+		"instances": "%INSTANCES%",
+		"exec_mode": "cluster",
+		"script": "%SCRIPT%",
+		"args": "%ARGS%",
+		"watch": false,
+		"ignore_watch": ["node_modules"],
+		"merge_logs": false,
+		"log_type": "json",
+		"cwd": "/home/proxy/%ENVIRONMENT%/%API_NAME%",
+		"log_date_format": "YYYY-MM-DD HH:mm Z",
+		"error_file": "/home/gitlab-runner/.pm2/logs/%API_NAME%-%ENV%-err.log",
+		"out_file": "/home/gitlab-runner/.pm2/logs/%API_NAME%-%ENV%-out.log",
+		"pid_file": "/home/gitlab-runner/.pm2/logs/%API_NAME%-%ENV%-id.pid",
+		"env": {
+			"NODE_ENV": "%ENVIRONMENT%",
+			"PORT": "%PORT%"    
+		}
+	}]
+}

@@ -1,0 +1,48 @@
+{
+    "loc": {
+        "coordinates": [
+            -100.388764,
+            20.616783
+        ],
+        "type": "Point"
+    },
+    "_id": "5c914060d5b5242cb817c0c7",
+    "street": "Nogal",
+    "outdoorNumber": "121",
+    "interiorNumber": "3er. Piso",
+    "settlement": "Arboledas",
+    "location": "",
+    "reference": "",
+    "latitude": 20.616783,
+    "longitude": -100.388764,
+    "zipCode": 76140,
+    "extraDetails": {
+        "_id": "5c891f8d29e5e225f4d59bd5",
+        "name": "Arboledas",
+        "country": {
+            "_id": 1,
+            "name": "México"
+        },
+        "state": {
+            "_id": 22,
+            "name": "Querétaro"
+        },
+        "town": {
+            "_id": 407,
+            "name": "Querétaro"
+        },
+        "settlement": {
+            "_id": 9,
+            "name": "Colonia"
+        },
+        "zipCode": 76140,
+        "__v": 0,
+        "createdAt": "2019-03-13T15:19:57.815Z",
+        "updatedAt": "2019-03-13T15:19:57.815Z"
+    },
+    "parentType": "client",
+    "parentId": "5c914060cff4d31cec99e32f",
+    "createdAt": "2019-03-19T19:17:52.339Z",
+    "updatedAt": "2019-03-19T19:17:52.339Z",
+    "__v": 0
+}

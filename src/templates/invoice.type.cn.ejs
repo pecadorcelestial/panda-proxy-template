@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nota de Crédito - <%= invoice.folio %></title>
+
+    <link rel="stylesheet" href="<%= publicPath %>/styles/receipts/html5reset-1.6.1.css">
+    <link rel="stylesheet" href="<%= publicPath %>/styles/invoices/type_a_receipt.css">
+</head>
+<body>
+<div id="header">
+    <div class="all_width text-left">
+        <img src="<%= publicPath %>/images/invoices/logo.jpg" alt="Domain">
+
+        <div class="float-right txt-nota-cred">Nota de Descuento</div>
+    </div>
+    <span class="fiscal-info-domain font7 text-center all_width">Domain S. de R.L. de C.V. | Boulevard Bernardo Quintana No. 562 Int. 7 ,Arboledas | QRO Quer&eacute;taro, M&eacute;xico., C.P. 76140 | RFC: IEN110119SC9</span>
+    <span class="fiscal-info-domain font7 text-center all_width">TEL. +52[442]349 76 06 | TEL. 01 800 6000 111 | domain.mx</span>
+</div>
+
+<table class="receipt">
+    <tr>
+        <td id="info-cliente">
+            <span class="bold font7">Cuenta</span><br>
+            <span class="bold font7"><%= account.accountNumber %></span><br>
+            <span class="bold font7"><%= client.businessData.businessName %></span><br>
+            <span class="font7"><%= client.rfc %></span><br>
+            <span class="font7"><%= client.address1 %></span><br>
+            <span class="font7"><%= client.zipCode %></span><br>
+            <span class="font7"><%= client.address2 %></span>
+        </td>
+        <td>
+            <table>
+                <tr class="font7">
+                    <td class="text-right bold">Nota de Cr&eacute;dito</td>
+                    <td colspan="2" class="text-left padded-left"><%= invoice.folio %></td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">Folio Fiscal</td>
+                    <td colspan="2" class="text-left padded-left"><%= invoice.uuid %></td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">Lugar de Expedici&oacute;n</td>
+                    <td colspan="2" class="text-left padded-left">76140</td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">Fecha de Emisi&oacute;n</td>
+                    <td colspan="2" class="text-left padded-left"><%= date %></td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">Fecha de Certificaci&oacute;n</td>
+                    <td colspan="2" class="text-left padded-left"><%= invoice.stampingDate %></td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">Certificado Digital</td>
+                    <td colspan="2" class="text-left padded-left"><%= invoice.csd %></td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right">&nbsp;</td>
+                    <td colspan="2" class="text-left padded-left">&nbsp;</td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">Certificado SAT</td>
+                    <td colspan="2" class="text-left padded-left"><%= invoice.satCSD %></td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">R&eacute;gimen F&iacute;scal</td>
+                    <td colspan="2" class="text-left padded-left">601 - General de Ley de Personas Morales</td>
+                </tr>
+                <tr class="font7">
+                    <td class="text-right bold">Uso de CFDI</td>
+                    <td colspan="2" class="text-left padded-left"><%= invoice.cfdiUse %></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<div id="concept-container">
+    <table>
+    <thead>
+        <tr>
+            <th class="font7 white red_bg text-center small-column mas_padding">Cantidad</th>
+            <th class="font7 white red_bg text-center small-column mas_padding">Clave</th>
+            <th class="font7 white red_bg text-center small-column mas_padding">Cve. Unidad</th>
+            <th class="font7 white red_bg text-center small-column mas_padding">Cve. Servicio</th>
+            <th class="font7 white red_bg text-left mas_padding">Descripci&oacute;n</th>
+            <th class="font7 white red_bg text-center small-column mas_padding">Precio Unitario</th>
+            <th class="font7 white red_bg text-right small-column mas_padding">Importe</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% invoice.concepts.forEach(function(concept){ %>
+            <tr>
+                <td class="font7 text-center"><%= concept.amount %></td>
+                <td class="font7 text-center"><%= concept.key %></td>
+                <td class="font7 text-center"><%= concept.unitKey %></td>
+                <td class="font7 text-center"><%= concept.serviceKey %></td>
+                <td class="font7 text-left"><%= concept.description %></td>
+                <td class="font7 text-right"><%= concept.unitCost %></td>
+                <td class="font7 text-right"><%= concept.total %></td>
+            </tr>
+        <% }); %>
+        <tr>
+            <td colspan="7">
+                <div class="linea_separador"></div>
+            </td>
+        </tr>
+        <tr id="concept-footer">
+            <td colspan="4">
+                <table>
+                    <tr>
+                        <td class="font7"><span class="bold">Forma de Pago:</span></td>
+                        <td class="font7"><span><%= invoice.paymentForm %></span></td>
+                    </tr>
+                    <tr>
+                        <td class="font7">
+                            <span class="bold">M&eacute;todo de Pago:</span>
+                        </td>
+                        <td class="font6">
+                            <span><%= invoice.paymentMethod %></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="font7">
+                            <span class="bold">Cuenta de Pago:</span>
+                        </td>
+                        <td class="font7">
+                            <span><%= client.businessData.issuingAccountNumber %></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="font7">
+                            <span class="bold">Moneda:</span>
+                        </td>
+                        <td class="font7">
+                            <span><%= invoice.currency %></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="font7">
+                            <span class="bold">Tipo de cambio:</span>
+                        </td>
+                        <td class="font7">
+                            <span><%= invoice.exchangeRate %></span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td colspan="3">
+                <table>
+                    <tr>
+                        <td class="font8"><span class="bold">Subtotal</span></td>
+                        <td class="font8 text-right"><%= invoice.subtotal %></td>
+                    </tr>
+                    <tr>
+                        <td class="font8"><span class="bold">Descuento</span></td>
+                        <td class="font8 text-right">
+                            -<%= invoice.discount %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="font8"><span class="bold">IVA 16 %</span></td>
+                        <td class="font8 text-right"><%= invoice.taxes %></td>
+                    </tr>
+                    <tr>
+                        <td class="font8"><span class="bold">Total</span></td>
+                        <td class="font8 text-right"><%= invoice.total %></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7">
+                <div class="linea_separador"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7">
+                <span class="bold font7">Cantidad con letra:</span>
+                <span class="candidadconletra font7"><%= invoice.totalInText %></span><br><br>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-center" style="padding: 0px 0px;">
+                <img src="data:image/png;base64, <%= invoice.qrCode %>" alt="qr code" style="width: 2.75cm;height: 2.75cm;"><br>
+                <span class="font4">
+                    FIN DE COMPROBANTE FISCAL
+                </span>
+            </td>
+            <td colspan="5" class="sin_padding">
+                <table>
+                    <tr>
+                        <td class="sin_padding">
+                            <span class="font7 bold">SELLO DIGITAL DEL EMISOR</span>
+                            <div class="float-right txt-nota-cred">Nota de Descuento</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="linea_separador"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="font6 bold cortar_texto">
+                            <span class="cadenas_sat"><%= invoice.cfdiStamp %></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span class="font7 bold">SELLO DIGITAL DEL SAT</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="linea_separador"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="font6 bold cortar_texto">
+                            <span class="cadenas_sat"><%= invoice.satStamp %></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span class="font7 bold">CADENA ORIGINAL DEL COMPLEMENTO DE CERTIFICACION DIGITAL DEL SAT</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="linea_separador"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="font6 bold cortar_texto">
+                            <span class="cadenas_sat"><%= invoice.originalString %></span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<table class="receipt">
+    <tr>
+        <td>
+            <span class="font4 arrow_container text-left">
+                <img src="<%= publicPath %>/images/invoices/top_arrow.jpg" alt="arrow_down">
+                <img src="<%= publicPath %>/images/invoices/top_arrow.jpg" alt="arrow_down">
+                <img src="<%= publicPath %>/images/invoices/top_arrow.jpg" alt="arrow_down">
+            </span>
+            <span class="font5 bold arrow_container">
+                Este documento es una representaci&oacute;n impresa de un CFDI.
+            </span>
+        </td>
+        <td class="text-center v-align-bottom">
+
+        </td>
+        <td class="text-right">
+            <span class="font4 arrow_container">
+                <img src="<%= publicPath %>/images/invoices/top_arrow.jpg" alt="arrow_down">
+                <img src="<%= publicPath %>/images/invoices/top_arrow.jpg" alt="arrow_down">
+                <img src="<%= publicPath %>/images/invoices/top_arrow.jpg" alt="arrow_down">
+            </span>
+        </td>
+    </tr>
+</table>
+<table class="border_top_black">
+    <tr>
+        <td>
+            <span class="font4 arrow_container text-left">
+                <img src="<%= publicPath %>/images/invoices/down_arrow.jpg" alt="arrow_top">
+                <img src="<%= publicPath %>/images/invoices/down_arrow.jpg" alt="arrow_top">
+                <img src="<%= publicPath %>/images/invoices/down_arrow.jpg" alt="arrow_top">
+            </span>
+            <span class="font4 arrow_container text-left">
+                TAL&Oacute;N DE PAGOS BANCARIOS
+            </span>
+        </td>
+        <td class="v-align-top text-left">
+
+        </td>
+        <td class="text-right">
+            <span class="font4 arrow_container">
+                <img src="<%= publicPath %>/images/invoices/down_arrow.jpg" alt="arrow_top">
+                <img src="<%= publicPath %>/images/invoices/down_arrow.jpg" alt="arrow_top">
+                <img src="<%= publicPath %>/images/invoices/down_arrow.jpg" alt="arrow_top">
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" id="pre_footer">
+            <div class="table-container v-align-top">
+                <span class="bold font6 all_width">
+                Boleta de pago, s&oacute;lo se aceptan pagos electr&oacute;nicos y en ventanilla
+                </span>
+                <br>
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="font8 red_bg white border_red mas_padding">Fecha L&iacute;mite de Pago</th>
+                        <th class="font8 red_bg white border_red mas_padding">N&uacute;mero de cuenta y Nombre del cliente</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="font8 bold border_red padded-left mas_padding text-center"><%= dueDate %></td>
+                        <td class="font8 bold border_red padded-left mas_padding text-center"><%= account.accountNumber %> <%= client.name %></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="image-container" id="logo-bottom" style="margin-left: 15px; margin-top: 20px;">
+                <img src="<%= publicPath %>/images/invoices/logo.jpg" alt="Domain">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span class="bold font7">
+                Datos Bancarios
+            </span>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="font7 text-right">Beneficiario:</td>
+                        <td class="font7 padded-left">Domain S. de R.L. de C.V.</td>
+                    </tr>
+                    <tr>
+                        <td class="font7 text-right">Total a Pagar:</td>
+                        <td class="font7 padded-left"><%= invoice.total %></td>
+                    </tr>
+                    <tr>
+                        <td class="font7 text-right">Fecha L&iacute;mite de Pago:</td>
+                        <td class="font7 padded-left"><%= dueDate %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td colspan="2" class="padding-top">
+            <table>
+                <tbody>
+                    <tr class="text-center">
+                        <td class="black_bg bold black_border"></td>
+                        <td class="black_bg bold black_border"></td>
+                        <td class="black_bg bold black_border">
+                            <span class="red padded font6"><b>REFERENCIAS DE PAGO</b></span>
+                        </td>
+                        <td class="black_bg bold black_border"></td>
+                        <td class="black_bg bold black_border"></td>
+                    </tr>
+                    <tr class="black_bg bold black_border text-center">
+                        <td class="white font6">BANCO</td>
+                        <td class="white font6">CONVENIO</td>
+                        <td class="white font6">CUENTA</td>
+                        <td class="white font6">CLABE</td>
+                        <td class="white font6">REFERENCIA</td>
+                    </tr>
+                    <tr class="black_border text-center">
+                        <td class="bold font6" id="reference-footer">
+                            BanBaj&iacute;o
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            ------
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            6504898
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            030680650489801013
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            <%= account.paymentReferences[0] || '------' %>
+                        </td>
+                    </tr>
+                    <tr class="black_border text-center">
+                        <td class="bold font6" id="reference-footer">
+                            Bancomer
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            1434632
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            ------
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            ------
+                        </td>
+                        <td class="bold font6" id="reference-footer">
+                            <%= account.paymentReferences[1] || '------' %>
+                        </td>
+                    </tr>
+                    <tr class="font5">
+                        <td class="text-right"></td>
+                        <td class="text-right">** USE &Eacute;STAS</td>
+                        <td class="text-center">REFERENCIAS PARA EFECTUAR</td>
+                        <td class="text-left">SU PAGO **</td>
+                        <td class="text-left"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+
+</table>
+</body>
+</html>

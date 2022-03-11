@@ -1,0 +1,10 @@
+body {
+    background-color: green;
+    border: 2px dotted red;
+    display: block;
+    height: 11in;
+    margin: 0px;
+    padding: 2mm;
+    width: 8.5in;
+    zoom: 2.45;
+}
