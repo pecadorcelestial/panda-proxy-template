@@ -1,0 +1,148 @@
+# before_script:
+  # Nothing to do here at the moment.
+
+stages:
+  - build
+  - test
+  - stop_processes
+  - deploy
+  - save_instances
+  - validate_services
+
+# Cache
+cache:
+  paths:
+    - node_modules/
+
+# Building
+install_dependencies:
+  tags:
+    - node
+    - proxy
+  stage: build
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+
+# Testing
+test:
+  tags:
+    - node
+    - proxy
+  stage: test
+  script:
+    - npm run test
+
+# Stop processes
+stop_processes:
+  tags:
+    - node
+    - proxy
+  stage: stop_processes
+  script:
+    - pm2 delete $API_NAME.dev || echo "Continue..."
+    # - pm2 delete $API_NAME.production || echo "Continue..."
+  only:
+    - master
+
+# Validate
+validate_services:
+  tags:
+    - node
+    - proxy
+  stage: validate_services
+  script:
+    - curl http://$IP_ADDRESS:$PORT_DEV/ || echo "Continue..."
+    # - curl http://$IP_ADDRESS:$PORT_PRODUCTION/ || echo "Continue..."
+  only:
+    - master
+
+# Save PM2 instances.
+save_instances:
+  tags:
+    - node
+    - proxy
+  stage: save_instances
+  script:
+    - sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u gitlab-runner --hp /home/gitlab-runner
+    - pm2 save
+  only:
+    - master
+
+# Deploy to Development Environment
+deploy_development:
+  tags:
+    - node
+    - proxy
+  stage: deploy
+  script:
+    - echo "Deploying to development stage..."
+    - rm -f -r $PROXY_PATH/$ENVIRONMENT_DEV/$API_NAME
+    - mkdir -p $PROXY_PATH/$ENVIRONMENT_DEV/$API_NAME
+    - cp -r * $PROXY_PATH/$ENVIRONMENT_DEV/$API_NAME/
+    - cd $PROXY_PATH/$ENVIRONMENT_DEV/$API_NAME/
+    - sed -i "s/%API_NAME%/$API_NAME/g" ecosystem.config.json
+    - sed -i "s/%INSTANCES%/$INSTANCES/g" ecosystem.config.json
+    - sed -i "s/%ENV%/$ENV_DEV/g" ecosystem.config.json
+    - sed -i "s/%ENVIRONMENT%/$ENVIRONMENT_DEV/g" ecosystem.config.json
+    - sed -i "s/%PORT%/$PORT_DEV/g" ecosystem.config.json
+    - sed -i "s/%SCRIPT%/$SCRIPT_DEV/g" ecosystem.config.json
+    - sed -i "s/%ARGS%/$ARGS_DEV/g" ecosystem.config.json
+    - pm2 start ecosystem.config.json
+  only:
+    - master
+
+# Deploy to Production
+deploy_prod:
+  tags:
+    - node
+    - proxy
+  stage: deploy
+  script:
+    - pm2 delete $API_NAME.production || echo "Continue..."
+    - echo "Deploying to development stage..."
+    - rm -f -r $PROXY_PATH/$ENVIRONMENT_PRODUCTION/$API_NAME
+    - mkdir -p $PROXY_PATH/$ENVIRONMENT_PRODUCTION/$API_NAME
+    - cp -r * $PROXY_PATH/$ENVIRONMENT_PRODUCTION/$API_NAME/
+    - cd $PROXY_PATH/$ENVIRONMENT_PRODUCTION/$API_NAME/
+    - sed -i "s/%API_NAME%/$API_NAME/g" ecosystem.config.json
+    - sed -i "s/%INSTANCES%/$INSTANCES/g" ecosystem.config.json
+    - sed -i "s/%ENV%/$ENV_PRODUCTION/g" ecosystem.config.json
+    - sed -i "s/%ENVIRONMENT%/$ENVIRONMENT_PRODUCTION/g" ecosystem.config.json
+    - sed -i "s/%PORT%/$PORT_PRODUCTION/g" ecosystem.config.json
+    - sed -i "s/%SCRIPT%/$SCRIPT_PRODUCTION/g" ecosystem.config.json
+    - sed -i "s/%ARGS%/$ARGS_PRODUCTION/g" ecosystem.config.json
+    - npm run start
+  environment:
+    name: production
+  when: manual
+  only:
+    - master
+
+# Deploy to Staging
+deploy_staging:
+  tags:
+    - node
+    - proxy
+  stage: deploy
+  script:
+    - echo "Deploying to staging stage..."
+    - rm -f -r $PROXY_PATH/$ENVIRONMENT_STAGING/$API_NAME
+    - mkdir -p $PROXY_PATH/$ENVIRONMENT_STAGING/$API_NAME
+    - cp -r * $PROXY_PATH/$ENVIRONMENT_STAGING/$API_NAME/
+    - cd $PROXY_PATH/$ENVIRONMENT_STAGING/$API_NAME/
+    - sed -i "s/%API_NAME%/$API_NAME/g" ecosystem.config.json
+    - sed -i "s/%INSTANCES%/$INSTANCES/g" ecosystem.config.json
+    - sed -i "s/%ENV%/$ENV_STAGING/g" ecosystem.config.json
+    - sed -i "s/%ENVIRONMENT%/$ENVIRONMENT_STAGING/g" ecosystem.config.json
+    - sed -i "s/%PORT%/$PORT_STAGING/g" ecosystem.config.json
+    - sed -i "s/%SCRIPT%/$SCRIPT_STAGING/g" ecosystem.config.json
+    - sed -i "s/%ARGS%/$ARGS_STAGING/g" ecosystem.config.json
+    - npm run start:staging
+  environment:
+    name: staging
+  when: manual
+  only:
+    - master
