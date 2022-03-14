@@ -20,7 +20,7 @@
     "start:qa": "ts-node ./src/server.ts",
     "start:dev": "ts-node ./src/server.ts",
     "start:local": "set NODE_ENV=local && ts-node ./src/server.ts",
-    "start:localMac": "export NODE_ENV=local && ts-node ./src/server.ts",
+    "start:mac-local": "export NODE_ENV=local && ts-node ./src/server.ts",
     "test": "exit 0",
     "test:local": "set NODE_ENV=test && jest --coverage --config ./jest.config.js",
     "change:version": "bash src/scripts/change-version.sh",

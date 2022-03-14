@@ -26,6 +26,7 @@ import InvoiceModelV2 from './models/invoicesV2';
 //Comando para generar un CSR (Certificate Signing Request).
 //openssl req -new -newkey rsa:2048 -nodes -keyout tudominio.key -out tudominio.csr
 
+/*
 let httpsOptions = {
     key: fs.readFileSync(__dirname + '/certificate/domain.net.key', 'utf8'),
     cert: fs.readFileSync(__dirname + '/certificate/domain.net.crt', 'utf8'),
@@ -33,6 +34,7 @@ let httpsOptions = {
         fs.readFileSync(__dirname + '/certificate/bundle.crt', 'utf8')
     ]
 };
+*/
 
 const environment: string = process.env.NODE_ENV || 'development';
 let PORT: number = 3000;
@@ -59,7 +61,7 @@ switch(environment.trim().toLowerCase()) {
 //SSSS  EEEEE R   R   V   IIIII DDDD   OOO  R   R
 
 let httpServer = http.createServer(app);
-let httpsServer = https.createServer(httpsOptions, app);
+let httpsServer = https.createServer(/*httpsOptions, */app);
 
 if(environment.trim().toLowerCase() === 'production') {
 
